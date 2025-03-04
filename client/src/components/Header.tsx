@@ -56,9 +56,10 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href.replace("/#", ""))}
-                className="text-sm font-medium hover:text-primary transition-colors"
+                className="text-sm font-medium relative group"
               >
                 {link.label}
+                <span className="absolute left-0 bottom-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out" />
               </a>
             ))}
             <ThemeToggle />
@@ -74,9 +75,10 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href.replace("/#", ""))}
-                  className="text-sm font-medium hover:text-primary transition-colors px-2 py-1"
+                  className="text-sm font-medium px-2 py-1 relative group"
                 >
                   {link.label}
+                  <span className="absolute left-0 bottom-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out" />
                 </a>
               ))}
             </div>
