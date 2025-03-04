@@ -47,7 +47,10 @@ export function HospitalLogos() {
             src={hospital.logo}
             alt={`${hospital.name} logo`}
             className="max-w-full h-auto"
-            loading="lazy"
+            width="200"
+            height="100"
+            loading={index < 4 ? "eager" : "lazy"}
+            decoding="async"
           />
         </Card>
       ))}

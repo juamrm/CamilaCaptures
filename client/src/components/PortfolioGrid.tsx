@@ -83,10 +83,14 @@ export function PortfolioGrid() {
         <Card key={index} className="overflow-hidden">
           <AspectRatio ratio={3/4}>
             <img
-              src={image.src}
+              src={`${image.src}?w=400&auto=format,compress`}
               alt={image.alt}
               className="object-cover w-full h-full transition-transform hover:scale-105"
               loading="lazy"
+              width="400"
+              height="533"
+              fetchPriority={index < 6 ? "high" : "low"}
+              decoding="async"
             />
           </AspectRatio>
         </Card>
