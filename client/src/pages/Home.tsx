@@ -5,10 +5,18 @@ import { ContactForm } from "@/components/ContactForm";
 import { HospitalLogos } from "@/components/HospitalLogos";
 import { Card, CardContent } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Helmet } from "react-helmet";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <Helmet>
+        <title>Home - Camila Amorim</title>
+        <meta
+          name="description"
+          content="Welcome to Camila Amorim's birth photography portfolio. Capturing life's first moments with elegance and authenticity."
+        />
+      </Helmet>
       <Header />
 
       {/* Hero Section */}
@@ -31,7 +39,8 @@ export default function Home() {
                 Capturing Life's First Moments
               </h1>
               <p className="text-base md:text-lg text-muted-foreground max-w-2xl">
-                Birth photography that tells your unique story with elegance and authenticity
+                Birth photography that tells your unique story with elegance and
+                authenticity
               </p>
             </div>
           </div>
@@ -51,18 +60,22 @@ export default function Home() {
                 />
               </div>
               <CardContent className="p-6 md:p-8 flex flex-col justify-center">
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">About Me</h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">
+                  About Me
+                </h2>
                 <div className="prose dark:prose-invert">
                   <p>
-                    Hello! I'm Camila Amorim, a birth photographer based in São Paulo, Brazil.
-                    With over a decade of experience, I specialize in capturing the raw emotion
-                    and beauty of childbirth.
+                    Hello! I'm Camila Amorim, a birth photographer based in São
+                    Paulo, Brazil. With over a decade of experience, I
+                    specialize in capturing the raw emotion and beauty of
+                    childbirth.
                   </p>
                   <p>
-                    My approach is unobtrusive yet intimate, ensuring that every precious
-                    moment is preserved while respecting the sacred space of birth. I believe
-                    that these first moments are invaluable memories that deserve to be
-                    captured with artistry and sensitivity.
+                    My approach is unobtrusive yet intimate, ensuring that every
+                    precious moment is preserved while respecting the sacred
+                    space of birth. I believe that these first moments are
+                    invaluable memories that deserve to be captured with
+                    artistry and sensitivity.
                   </p>
                 </div>
               </CardContent>
@@ -74,9 +87,12 @@ export default function Home() {
       {/* Hospital Accreditation Section */}
       <section id="hospitals" className="py-12 md:py-16 px-4">
         <div className="container mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">Accredited Hospitals</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">
+            Accredited Hospitals
+          </h2>
           <p className="text-muted-foreground text-center mb-8 max-w-2xl mx-auto">
-            I am cleared to work in São Paulo's leading maternity hospitals, ensuring I can be there for your special moment.
+            I am cleared to work in São Paulo's leading maternity hospitals,
+            ensuring I can be there for your special moment.
           </p>
           <HospitalLogos />
         </div>
@@ -85,7 +101,9 @@ export default function Home() {
       {/* Portfolio Section */}
       <section id="portfolio" className="py-12 md:py-16 px-4">
         <div className="container mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Portfolio</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
+            Portfolio
+          </h2>
           <PortfolioGrid />
         </div>
       </section>
@@ -93,7 +111,9 @@ export default function Home() {
       {/* Contact Section */}
       <section id="contact" className="py-12 md:py-16 px-4">
         <div className="container mx-auto max-w-md">
-          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Get in Touch</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
+            Get in Touch
+          </h2>
           <ContactForm />
         </div>
       </section>

@@ -31,12 +31,23 @@ export function ContactForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    toast({
-      title: "Message sent!",
-      description: "Thank you for your message. I'll get back to you soon.",
-    });
-    form.reset();
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      // Simulate form submission
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      toast({
+        title: "Message sent!",
+        description: "Thank you for your message. I'll get back to you soon.",
+      });
+      form.reset();
+    } catch (error) {
+      toast({
+        title: "Error",
+        description:
+          "There was an error sending your message. Please try again later.",
+        variant: "destructive",
+      });
+    }
   }
 
   return (
@@ -49,7 +60,7 @@ export function ContactForm() {
             <FormItem>
               <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input placeholder="Your name" {...field} />
+                <Input placeholder="Your name" aria-label="Name" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -62,7 +73,12 @@ export function ContactForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="your@email.com" type="email" {...field} />
+                <Input
+                  placeholder="your@email.com"
+                  type="email"
+                  aria-label="Email"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -78,6 +94,7 @@ export function ContactForm() {
                 <Textarea
                   placeholder="Tell me about your special moment..."
                   className="min-h-[120px]"
+                  aria-label="Message"
                   {...field}
                 />
               </FormControl>

@@ -7,9 +7,12 @@ import { Button } from "./ui/button";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const scrollToSection = useSmoothScroll();
+  const { scrollToSection } = useSmoothScroll();
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    sectionId: string
+  ) => {
     e.preventDefault();
     scrollToSection(sectionId);
     setIsMenuOpen(false);
@@ -74,7 +77,9 @@ export function Header() {
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href.replace("/#", ""))}
+                  onClick={(e) =>
+                    handleNavClick(e, link.href.replace("/#", ""))
+                  }
                   className="text-sm font-medium px-2 py-1 relative group"
                 >
                   {link.label}

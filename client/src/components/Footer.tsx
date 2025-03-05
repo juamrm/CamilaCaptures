@@ -12,18 +12,18 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
+              aria-label="Instagram"
             >
               <SiInstagram className="w-6 h-6" />
-              <span className="sr-only">Instagram</span>
             </a>
             <a
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
+              aria-label="Facebook"
             >
               <SiFacebook className="w-6 h-6" />
-              <span className="sr-only">Facebook</span>
             </a>
           </div>
           <div className="text-sm text-muted-foreground">
