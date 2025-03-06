@@ -57,7 +57,7 @@ export default function Home() {
         <div className="container mx-auto">
           <Card className="max-w-3xl mx-auto overflow-hidden">
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="aspect-[4/5] relative">
+              <div className="aspect-[5/9] relative">
                 <img
                   src={camilaProfile}
                   alt="Camila working"

@@ -16,19 +16,21 @@ export function Footer() {
             >
               <SiInstagram className="w-6 h-6" />
             </a>
-            <a
-              href="https://www.facebook.com/camilaamorimfotografia"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-              aria-label="Facebook"
-            >
-              <SiFacebook className="w-6 h-6" />
-            </a>
           </div>
           <div className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Camila Amorim. Todos os direitos
-            reservados.
+            reservados. <br />
+            <br />
+            <span className="text-sm text-muted-foreground font-bold">
+              Desenvolvido por{" "}
+              <a
+                href="https://www.linkedin.com/in/julianaamrm/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Juliana Amorim
+              </a>
+            </span>
           </div>
         </div>
       </div>
