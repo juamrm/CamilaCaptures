@@ -6,6 +6,7 @@ import { HospitalLogos } from "@/components/HospitalLogos";
 import { Card, CardContent } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Helmet } from "react-helmet";
+import camilaProfile from "@/assets/images/camilaprofile.webp";
 
 export default function Home() {
   return (
@@ -27,7 +28,7 @@ export default function Home() {
             <div className="w-full md:w-1/3 max-w-sm">
               <AspectRatio ratio={1}>
                 <img
-                  src="src/assets/images/camilaprofile.webp"
+                  src={camilaProfile}
                   alt="Camila Amorim"
                   className="rounded-full object-cover w-full h-full"
                 />
@@ -58,13 +59,13 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="aspect-[4/5] relative">
                 <img
-                  src="src/assets/images/camilaprofile.webp"
+                  src={camilaProfile}
                   alt="Camila working"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
               </div>
               <CardContent className="p-6 md:p-8 flex flex-col justify-center">
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
+                <h2 className="text-2xl md:text-4xl font-bold mb-6">
                   Sobre Mim
                 </h2>
                 <div className="prose dark:prose-invert">
