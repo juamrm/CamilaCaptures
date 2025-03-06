@@ -19,14 +19,14 @@ export function Header() {
   };
 
   const navLinks = [
-    { href: "/#about", label: "About" },
-    { href: "/#hospitals", label: "Hospitals" },
+    { href: "/#about", label: "Sobre Mim" },
+    { href: "/#hospitals", label: "Hospitais" },
     { href: "/#portfolio", label: "Portfolio" },
-    { href: "/#contact", label: "Contact" },
+    { href: "/#contact", label: "Contato" },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/60 backdrop-blur-sm border-b">
       <div className="container mx-auto px-4">
         <div className="h-16 flex items-center justify-between">
           <Link href="/">

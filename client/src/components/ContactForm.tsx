@@ -15,9 +15,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
+  name: z.string().min(2, "O nome deve ter ao menos 2 caracteres"),
+  email: z.string().email("Por favor insira um email válido"),
+  phone: z.string().optional(),
+  message: z.string().min(10, "A mensagem deve ter ao menos 10 caracteres"),
 });
 
 export function ContactForm() {
@@ -27,6 +28,7 @@ export function ContactForm() {
     defaultValues: {
       name: "",
       email: "",
+      phone: "",
       message: "",
     },
   });
@@ -58,7 +60,7 @@ export function ContactForm() {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>Nome</FormLabel>
               <FormControl>
                 <Input placeholder="Your name" aria-label="Name" {...field} />
               </FormControl>
@@ -86,13 +88,31 @@ export function ContactForm() {
         />
         <FormField
           control={form.control}
+          name="phone"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Telefone</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="(00) 00000-0000"
+                  type="tel"
+                  aria-label="Phone"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Message</FormLabel>
+              <FormLabel>Mensagem</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Tell me about your special moment..."
+                  placeholder="Conte-me sobre seu momento especial..."
                   className="min-h-[120px]"
                   aria-label="Message"
                   {...field}
@@ -103,7 +123,7 @@ export function ContactForm() {
           )}
         />
         <Button type="submit" className="w-full">
-          Send Message
+          Enviar mensagem
         </Button>
       </form>
     </Form>
