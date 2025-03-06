@@ -39,7 +39,7 @@ export default function Home() {
                 Capturando os primeiros momentos
               </h1>
               <p className="text-base md:text-lg text-muted-foreground max-w-2xl">
-                Fotografia de parto que conta sua história única com
+                Fotografias de parto que contam sua história única com
                 <span className="font-bold" aria-label="sensibilidade">
                   {" "}
                   sensibilidade
@@ -58,7 +58,7 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="aspect-[4/5] relative">
                 <img
-                  src="https://images.unsplash.com/photo-1559369064-c4d65141e408"
+                  src="src/assets/images/camilaprofile.webp"
                   alt="Camila working"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
