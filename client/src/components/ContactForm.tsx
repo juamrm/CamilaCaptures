@@ -39,7 +39,7 @@ export function ContactForm() {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       toast({
         title: "Mensagem enviada!",
-        description: "Obrigada por sua mensagem. Entrarei em contato em breve.",
+        description: "Obrigada por sua mensagem! Entrarei em contato em breve.",
       });
       form.reset();
     } catch (error) {
