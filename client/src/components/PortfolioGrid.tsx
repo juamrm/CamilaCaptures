@@ -12,9 +12,9 @@ export function PortfolioGrid() {
               src={`${image.src}?w=400&auto=format,compress`}
               alt={image.alt}
               className="object-cover w-full h-full transition-transform hover:scale-110"
-              loading="lazy"
+              loading={index < 6 ? "eager" : "lazy"}
               width="400"
-              height="533"
+              height="300"
               fetchPriority={index < 6 ? "high" : "low"}
               decoding="async"
             />

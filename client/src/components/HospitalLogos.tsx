@@ -69,7 +69,10 @@ export function HospitalLogos() {
               alt={`${hospital.name} logo`}
               className={`w-auto h-full max-h-[80px] object-contain ${hospital.className || ""}`}
               loading={index < 4 ? "eager" : "lazy"}
+              fetchPriority={index < 4 ? "high" : "low"}
               decoding="async"
+              width="200"
+              height="80"
             />
           </div>
         </Card>

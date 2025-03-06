@@ -31,6 +31,11 @@ export default function Home() {
                   src={camilaProfile}
                   alt="Camila Amorim"
                   className="rounded-full object-cover w-full h-full"
+                  loading="eager"
+                  fetchPriority="high"
+                  width="400"
+                  height="400"
+                  decoding="async"
                 />
               </AspectRatio>
             </div>
@@ -118,11 +123,73 @@ export default function Home() {
 
       {/* Contact Section */}
       <section id="contact" className="py-12 md:py-16 px-4">
-        <div className="container mx-auto max-w-md">
-          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
-            Contato
-          </h2>
-          <ContactForm />
+        <div className="container mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            {/* Left side - Contact Info and Image */}
+            <div className="flex flex-col items-center md:items-start gap-6">
+              <div className="w-full max-w-sm">
+                <img
+                  src="/baby-foot-bw.jpg"
+                  alt="Newborn baby foot"
+                  className="w-full h-auto grayscale"
+                />
+              </div>
+              <div className="text-center md:text-left space-y-4">
+                <h2 className="text-2xl md:text-3xl font-bold">
+                  Entre em contato comigo!
+                </h2>
+                <div className="flex flex-col gap-3">
+                  <a
+                    href="https://wa.me/5511998624083"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="w-5 h-5"
+                    >
+                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                    </svg>
+                    <span>11 99862-4083</span>
+                  </a>
+                  <a
+                    href="mailto:ola@camilansamorim.com.br"
+                    className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="w-5 h-5"
+                    >
+                      <rect width="20" height="16" x="2" y="4" rx="2" />
+                      <path d="m22 6-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 6" />
+                    </svg>
+                    <span>ola@camilansamorim.com.br</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            {/* Right side - Contact Form */}
+            <div className="w-full max-w-md mx-auto">
+              <ContactForm />
+            </div>
+          </div>
         </div>
       </section>
 

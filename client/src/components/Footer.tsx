@@ -8,7 +8,7 @@ export function Footer() {
         <div className="flex flex-col items-center gap-4">
           <div className="flex items-center gap-6">
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/camilansamorim"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
