@@ -28,7 +28,7 @@ const HOSPITAL_LOGOS = [
     name: "Hospital Santa Maria",
     logo: santaMariaLogo,
     className: "w-auto h-full max-h-[70px] object-contain",
-    containerClassName: "bg-blue-900/10 rounded-lg",
+    containerClassName: "bg-blue-900/30 rounded-lg",
   },
   {
     name: "Hospital Vitória",
