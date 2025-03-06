@@ -167,19 +167,13 @@ export default function Home() {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             {/* Left side - Contact Info and Image */}
-            <div className="flex flex-col items-center md:items-start gap-6">
-              <div className="w-full max-w-sm">
-                <img
-                  src="/baby-foot-bw.jpg"
-                  alt="Newborn baby foot"
-                  className="w-full h-auto grayscale"
-                />
-              </div>
-              <div className="text-center md:text-left space-y-4">
+            <div className="flex flex-col items-center md:items-start gap-6 md:pl-8">
+              <div className="w-full max-w-sm"></div>
+              <div className="text-center md:text-left space-y-6">
                 <h2 className="text-2xl md:text-3xl font-bold">
                   Entre em contato comigo!
                 </h2>
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-4">
                   <a
                     href="https://wa.me/5511998624083"
                     target="_blank"
@@ -190,7 +184,7 @@ export default function Home() {
                     <span>11 99862-4083</span>
                   </a>
                   <a
-                    href="mailto:ola@camilansamorim.com.br"
+                    href="mailto:camilansamorim@gmail.com"
                     className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
                   >
                     <svg
@@ -208,13 +202,13 @@ export default function Home() {
                       <rect width="20" height="16" x="2" y="4" rx="2" />
                       <path d="m22 6-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 6" />
                     </svg>
-                    <span>ola@camilansamorim.com.br</span>
+                    <span>camilansamorim@gmail.com</span>
                   </a>
                 </div>
               </div>
             </div>
             {/* Right side - Contact Form */}
-            <div className="w-full max-w-md mx-auto">
+            <div className="w-full max-w-[320px] mx-auto">
               <ContactForm />
             </div>
           </div>

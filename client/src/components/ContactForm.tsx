@@ -76,7 +76,7 @@ export function ContactForm() {
               <FormLabel>Email</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="seu@email.com"
+                  placeholder="seu@email.com.br"
                   type="email"
                   aria-label="Email"
                   {...field}
@@ -94,7 +94,7 @@ export function ContactForm() {
               <FormLabel>Telefone</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="(00) 00000-0000"
+                  placeholder="+55 (00) 00000-0000"
                   type="tel"
                   aria-label="Phone"
                   {...field}
