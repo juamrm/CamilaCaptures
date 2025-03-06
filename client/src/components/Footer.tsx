@@ -22,7 +22,7 @@ export function Footer() {
             reservados. <br />
             <br />
             <span className="text-sm text-muted-foreground font-medium">
-              Desenvolvido por{" "}
+              Desenvolvido com ❤️ por{" "}
               <a
                 href="https://www.linkedin.com/in/julianaamrm/"
                 target="_blank"

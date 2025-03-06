@@ -12,10 +12,13 @@ const HOSPITAL_LOGOS = [
   {
     name: "Hospital Promatre",
     logo: "/src/assets/logos/promatrelogo.png",
+    className: "w-auto h-full max-h-[100px]",
   },
   {
     name: "Hospital Santa Maria",
     logo: "/src/assets/logos/santamarialogo.png",
+    className:
+      "w-auto h-full max-h-[80px] p-2 rounded-lg border border-gray-200 dark:border-gray-600",
   },
   {
     name: "Hospital Vitória",
@@ -41,12 +44,12 @@ export function HospitalLogos() {
       {HOSPITAL_LOGOS.map((hospital, index) => (
         <Card
           key={index}
-          className="p-4 flex items-center justify-center bg-muted/30 hover:bg-muted/50 transition-colors h-[120px]"
+          className="p-4 flex items-center justify-center bg-gray-100 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 h-[120px] group cursor-pointer"
         >
           <img
             src={hospital.logo}
             alt={`${hospital.name} logo`}
-            className="w-auto h-full max-h-[80px] object-contain"
+            className={`w-auto h-full max-h-[80px] object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300 ${hospital.className || ""}`}
             loading={index < 4 ? "eager" : "lazy"}
             decoding="async"
           />
