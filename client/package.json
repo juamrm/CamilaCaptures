@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "convert-images": "node scripts/convertToWebp.js"
+  }
+}

@@ -21,7 +21,7 @@ export function Footer() {
             © {new Date().getFullYear()} Camila Amorim Fotografia. Todos os
             direitos reservados.
           </div>
-          <div className="text-sm text-muted-foreground font-medium text-center">
+          <div className="text-xs text-muted-foreground font-medium text-center">
             Desenvolvido com ❤️ por{" "}
             <a
               href="https://www.linkedin.com/in/julianaamrm/"

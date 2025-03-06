@@ -10,7 +10,22 @@ export function PortfolioGrid() {
         <Card key={index} className="overflow-hidden bg-white">
           <AspectRatio ratio={4 / 3}>
             <picture>
-              {/* Mobile first, then larger screens */}
+              {/* WebP format for modern browsers */}
+              <source
+                type="image/webp"
+                media="(min-width: 1024px)"
+                srcSet={`${image.src.replace(".jpg", ".webp")}?w=800&auto=format,compress&q=80 800w, ${image.src.replace(".jpg", ".webp")}?w=1200&auto=format,compress&q=80 1200w`}
+              />
+              <source
+                type="image/webp"
+                media="(min-width: 768px)"
+                srcSet={`${image.src.replace(".jpg", ".webp")}?w=600&auto=format,compress&q=80 600w, ${image.src.replace(".jpg", ".webp")}?w=800&auto=format,compress&q=80 800w`}
+              />
+              <source
+                type="image/webp"
+                srcSet={`${image.src.replace(".jpg", ".webp")}?w=400&auto=format,compress&q=80`}
+              />
+              {/* Fallback to JPEG for older browsers */}
               <source
                 media="(min-width: 1024px)"
                 srcSet={`${image.src}?w=800&auto=format,compress&q=80 800w, ${image.src}?w=1200&auto=format,compress&q=80 1200w`}
