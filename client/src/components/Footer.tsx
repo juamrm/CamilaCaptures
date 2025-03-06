@@ -18,8 +18,8 @@ export function Footer() {
             </a>
           </div>
           <div className="text-sm text-muted-foreground text-center">
-            © {new Date().getFullYear()} Camila Amorim. Todos os direitos
-            reservados.
+            © {new Date().getFullYear()} Camila Amorim Fotografia. Todos os
+            direitos reservados.
           </div>
           <div className="text-sm text-muted-foreground font-medium text-center">
             Desenvolvido com ❤️ por{" "}

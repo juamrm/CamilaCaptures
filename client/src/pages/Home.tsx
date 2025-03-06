@@ -9,6 +9,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Helmet } from "react-helmet";
 import camilaProfile from "@/assets/images/camilaprofile.webp";
 import { SiWhatsapp } from "react-icons/si";
+import { ScrollButton } from "@/components/ScrollButton";
 
 export default function Home() {
   return (
@@ -23,30 +24,30 @@ export default function Home() {
       <Header />
 
       {/* Hero Section */}
-      <section className="pt-20 md:pt-32 pb-12 md:pb-16 px-4">
+      <section className="pt-12 md:pt-20 pb-8 md:pb-12 px-4">
         <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
             {/* Profile Image */}
-            <div className="w-full md:w-1/3 max-w-sm">
+            <div className="w-full md:w-1/3 max-w-[200px] md:max-w-[220px]">
               <AspectRatio ratio={1}>
                 <img
                   src={camilaProfile}
                   alt="Camila Amorim"
-                  className="rounded-full object-cover w-full h-full"
+                  className="rounded-full object-cover w-full h-full shadow-md"
                   loading="eager"
                   fetchPriority="high"
-                  width="400"
-                  height="400"
+                  width="220"
+                  height="220"
                   decoding="async"
                 />
               </AspectRatio>
             </div>
             {/* Hero Text */}
             <div className="w-full md:w-2/3 text-center md:text-left">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3">
                 Capturando os primeiros momentos
               </h1>
-              <p className="text-base md:text-lg text-muted-foreground max-w-2xl">
+              <p className="text-sm md:text-base text-muted-foreground max-w-2xl">
                 Fotografias de parto que contam sua história única com
                 <span className="font-bold" aria-label="sensibilidade">
                   {" "}
@@ -186,6 +187,7 @@ export default function Home() {
       </section>
 
       <Footer />
+      <ScrollButton />
     </div>
   );
 }
