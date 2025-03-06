@@ -17,7 +17,7 @@ export function Footer() {
               <SiInstagram className="w-6 h-6" />
             </a>
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/camilaamorimfotografia"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -27,7 +27,8 @@ export function Footer() {
             </a>
           </div>
           <div className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Camila Amorim. All rights reserved.
+            © {new Date().getFullYear()} Camila Amorim. Todos os direitos
+            reservados.
           </div>
         </div>
       </div>
