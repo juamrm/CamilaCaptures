@@ -21,7 +21,7 @@ export function Footer() {
             © {new Date().getFullYear()} Camila Amorim. Todos os direitos
             reservados. <br />
             <br />
-            <span className="text-sm text-muted-foreground font-bold">
+            <span className="text-sm text-muted-foreground font-medium">
               Desenvolvido por{" "}
               <a
                 href="https://www.linkedin.com/in/julianaamrm/"
