@@ -1,40 +1,48 @@
 import { Card } from "@/components/ui/card";
+import einsteinLogo from "@/assets/logos/eisnteinlogo.webp";
+import santaJoanaLogo from "@/assets/logos/santajoanalogo.svg";
+import promatreLogo from "@/assets/logos/promatrelogo.png";
+import santaMariaLogo from "@/assets/logos/santamarialogo.png";
+import hospitalVitoriaLogo from "@/assets/logos/hospitalvitorialogo.png";
+import saoLuizLogo from "@/assets/logos/saoluizlogo.svg";
+import vilaNovaStarLogo from "@/assets/logos/redestarlogo.svg";
+import sepacoLogo from "@/assets/logos/sepacologo.webp";
 
 const HOSPITAL_LOGOS = [
   {
     name: "Hospital Israelita Albert Einstein",
-    logo: "/src/assets/logos/eisnteinlogo.webp",
+    logo: einsteinLogo,
   },
   {
     name: "Hospital Santa Joana",
-    logo: "/src/assets/logos/santajoanalogo.svg",
+    logo: santaJoanaLogo,
   },
   {
     name: "Hospital Promatre",
-    logo: "/src/assets/logos/promatrelogo.png",
+    logo: promatreLogo,
     className: "w-auto h-full max-h-[100px]",
   },
   {
     name: "Hospital Santa Maria",
-    logo: "/src/assets/logos/santamarialogo.png",
+    logo: santaMariaLogo,
     className:
       "w-auto h-full max-h-[80px] p-2 rounded-lg border border-gray-200 dark:border-gray-600",
   },
   {
     name: "Hospital Vitória",
-    logo: "/src/assets/logos/hospitalvitorialogo.png",
+    logo: hospitalVitoriaLogo,
   },
   {
     name: "Hospital Sao Luís Anália Franco",
-    logo: "/src/assets/logos/saoluizlogo.svg",
+    logo: saoLuizLogo,
   },
   {
     name: "Hospital Vila Nova Star",
-    logo: "/src/assets/logos/redestarlogo.svg",
+    logo: vilaNovaStarLogo,
   },
   {
     name: "Hospital Sepaco",
-    logo: "/src/assets/logos/sepacologo.webp",
+    logo: sepacoLogo,
   },
 ];
 
