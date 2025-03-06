@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { PortfolioGrid } from "@/components/PortfolioGrid";
 import { ContactForm } from "@/components/ContactForm";
 import { HospitalLogos } from "@/components/HospitalLogos";
+import { Services } from "@/components/Services";
 import { Card, CardContent } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Helmet } from "react-helmet";
@@ -97,6 +98,9 @@ export default function Home() {
           </Card>
         </div>
       </section>
+
+      {/* Services Section */}
+      <Services />
 
       {/* Hospital Accreditation Section */}
       <section id="hospitals" className="py-12 md:py-16 px-4">

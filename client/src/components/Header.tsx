@@ -19,9 +19,10 @@ export function Header() {
   };
 
   const navLinks = [
+    { href: "/#portfolio", label: "Portfolio" },
+    { href: "/#services", label: "Serviços" },
     { href: "/#about", label: "Sobre Mim" },
     { href: "/#hospitals", label: "Hospitais" },
-    { href: "/#portfolio", label: "Portfolio" },
     { href: "/#contact", label: "Contato" },
   ];
 
