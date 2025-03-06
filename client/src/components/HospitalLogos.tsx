@@ -6,32 +6,32 @@ const HOSPITAL_LOGOS = [
     logo: "src/assets/logos/einsteinlogo.svg",
   },
   {
-    name: "Hospital Sírio-Libanês",
-    logo: "https://placehold.co/200x100/e2e8f0/64748b?text=Sírio-Libanês",
-  },
-  {
-    name: "Hospital São Luiz",
-    logo: "https://placehold.co/200x100/e2e8f0/64748b?text=São+Luiz",
-  },
-  {
-    name: "Hospital Santa Catarina",
-    logo: "https://placehold.co/200x100/e2e8f0/64748b?text=Santa+Catarina",
-  },
-  {
-    name: "Hospital 9 de Julho",
-    logo: "https://placehold.co/200x100/e2e8f0/64748b?text=9+de+Julho",
-  },
-  {
     name: "Hospital Santa Joana",
-    logo: "https://placehold.co/200x100/e2e8f0/64748b?text=Santa+Joana",
+    logo: "src/assets/logos/santajoanologo.svg",
+  },
+  {
+    name: "Hospital Promatre",
+    logo: "src/assets/logos/promatelogos.svg",
+  },
+  {
+    name: "Hospital Santa Maria",
+    logo: "src/assets/logos/santamaria.svg",
+  },
+  {
+    name: "Hospital Vitória",
+    logo: "src/assets/logos/vitoria.svg",
+  },
+  {
+    name: "Hospital Sao Luís Anália Franco",
+    logo: "src/assets/logos/saoluizanialafranologo.svg",
   },
   {
     name: "Hospital Vila Nova Star",
-    logo: "https://placehold.co/200x100/e2e8f0/64748b?text=Vila+Nova+Star",
+    logo: "src/assets/logos/vilanovastar.svg",
   },
   {
-    name: "Hospital São Camilo",
-    logo: "https://placehold.co/200x100/e2e8f0/64748b?text=São+Camilo",
+    name: "Hospital Sepaco",
+    logo: "src/assets/logos/sepaco.svg",
   },
 ];
 

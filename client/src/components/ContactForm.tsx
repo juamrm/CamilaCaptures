@@ -38,15 +38,15 @@ export function ContactForm() {
       // Simulate form submission
       await new Promise((resolve) => setTimeout(resolve, 1000));
       toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
+        title: "Mensagem enviada!",
+        description: "Obrigada por sua mensagem. Entrarei em contato em breve.",
       });
       form.reset();
     } catch (error) {
       toast({
-        title: "Error",
+        title: "Erro",
         description:
-          "There was an error sending your message. Please try again later.",
+          "Houve um erro ao enviar sua mensagem. Tente novamente mais tarde.",
         variant: "destructive",
       });
     }
@@ -62,7 +62,7 @@ export function ContactForm() {
             <FormItem>
               <FormLabel>Nome</FormLabel>
               <FormControl>
-                <Input placeholder="Your name" aria-label="Name" {...field} />
+                <Input placeholder="Seu nome" aria-label="Name" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -76,7 +76,7 @@ export function ContactForm() {
               <FormLabel>Email</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="your@email.com"
+                  placeholder="seu@email.com"
                   type="email"
                   aria-label="Email"
                   {...field}
