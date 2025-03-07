@@ -1,4 +1,5 @@
 import { PortfolioGrid } from "@/components/PortfolioGrid";
+import { CloudinaryTest } from "@/components/CloudinaryTest";
 import { Helmet } from "react-helmet";
 
 export default function Portfolio() {
@@ -12,6 +13,7 @@ export default function Portfolio() {
         />
       </Helmet>
       <h1 className="text-4xl font-bold mb-8">Portfolio</h1>
+      <CloudinaryTest />
       <PortfolioGrid />
     </div>
   );

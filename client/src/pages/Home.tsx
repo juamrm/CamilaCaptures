@@ -39,7 +39,7 @@ export default function Home() {
                   className="rounded-full object-cover w-full h-full shadow-xl relative z-10"
                   style={{ objectPosition: "center 30%" }}
                   loading="eager"
-                  fetchPriority="high"
+                  data-fetchpriority="high"
                   width="200"
                   height="200"
                   decoding="async"

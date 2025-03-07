@@ -30,10 +30,11 @@ export function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b">
       <div className="container mx-auto px-4">
         <div className="h-20 flex items-center justify-between">
-          <Link href="/">
-            <a className="text-xl md:text-2xl font-semibold tracking-tight">
-              Camila Amorim
-            </a>
+          <Link
+            href="/"
+            className="text-xl md:text-2xl font-semibold tracking-tight"
+          >
+            Camila Amorim
           </Link>
 
           {/* Mobile Menu Button */}

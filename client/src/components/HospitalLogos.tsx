@@ -69,7 +69,7 @@ export function HospitalLogos() {
               alt={`${hospital.name} logo`}
               className={hospital.className}
               loading={index < 4 ? "eager" : "lazy"}
-              fetchPriority={index < 4 ? "high" : "low"}
+              data-fetchpriority={index < 4 ? "high" : "low"}
               decoding="async"
               width="200"
               height="70"
