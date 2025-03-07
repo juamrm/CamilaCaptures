@@ -1,8 +1,9 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Card } from "@/components/ui/card";
+import {AdvancedImage} from '@cloudinary/react';
 import { PORTFOLIO_IMAGES } from "@/data/portfolioImages";
 import { useState, useEffect } from "react";
-import { AdvancedImage } from "@cloudinary/react";
+// import { AdvancedImage } from "@cloudinary/react";
 import { getCloudinaryImage } from "@/utils/cloudinary";
 
 interface ImageState {
@@ -16,37 +17,41 @@ export function PortfolioGrid() {
     new Map()
   );
 
+  const [images, setImages] = useState<any[]>([]);
+
   useEffect(() => {
     // Log the cloud name and first few image URLs for debugging
     console.log("Rendering images with following data:");
-    PORTFOLIO_IMAGES.slice(0, 3).forEach((image, index) => {
+    const result = PORTFOLIO_IMAGES.slice(0, 3).map((image, index) => {
       const cldImage = getCloudinaryImage(image.src);
       console.log(`Image ${index} URL:`, cldImage.toURL());
+      return cldImage;
     });
+    setImages(result);
   }, []);
 
-  const handleImageLoad = (index: number) => {
-    console.log(`Image ${index} loaded successfully`);
-    setImageStates((prev) => {
-      const newStates = new Map(prev);
-      newStates.set(index, { isLoading: false });
-      return newStates;
-    });
-  };
+  // const handleImageLoad = (index: number) => {
+  //   console.log(`Image ${index} loaded successfully`);
+  //   setImageStates((prev) => {
+  //     const newStates = new Map(prev);
+  //     newStates.set(index, { isLoading: false });
+  //     return newStates;
+  //   });
+  // };
 
-  const handleImageError = (index: number, error: any) => {
-    console.error(`Image ${index} failed to load:`, error);
-    setImageStates((prev) => {
-      const newStates = new Map(prev);
-      const cldImage = getCloudinaryImage(PORTFOLIO_IMAGES[index].src);
-      newStates.set(index, {
-        isLoading: false,
-        error: "Failed to load image",
-        url: cldImage.toURL(),
-      });
-      return newStates;
-    });
-  };
+  // const handleImageError = (index: number, error: any) => {
+  //   console.error(`Image ${index} failed to load:`, error);
+  //   setImageStates((prev) => {
+  //     const newStates = new Map(prev);
+  //     const cldImage = getCloudinaryImage(PORTFOLIO_IMAGES[index].src);
+  //     newStates.set(index, {
+  //       isLoading: false,
+  //       error: "Failed to load image",
+  //       url: cldImage.toURL(),
+  //     });
+  //     return newStates;
+  //   });
+  // };
 
   const failedCount = Array.from(imageStates.values()).filter(
     (state) => state.error
@@ -64,7 +69,11 @@ export function PortfolioGrid() {
           </p>
         </div>
       )}
-      {PORTFOLIO_IMAGES.map((image, index) => {
+
+      {images.map(src => (
+        <AdvancedImage cldImg={src} />
+      ))}
+      {/* {PORTFOLIO_IMAGES.map((image, index) => {
         const state = imageStates.get(index) || { isLoading: true };
         const cldImage = getCloudinaryImage(image.src);
 
@@ -81,7 +90,7 @@ export function PortfolioGrid() {
                 }`}
               />
 
-              {/* Error overlay */}
+              
               {state.error && (
                 <div className="absolute inset-0 bg-red-50/90 flex flex-col items-center justify-center p-4 text-center text-red-600">
                   <p>Failed to load image</p>
@@ -93,7 +102,7 @@ export function PortfolioGrid() {
             </AspectRatio>
           </Card>
         );
-      })}
+      })} */}
     </div>
   );
 }

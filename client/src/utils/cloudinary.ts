@@ -22,6 +22,8 @@ const cld = new Cloudinary({
     cloudName: isValidCloudName(cloudinaryConfig.cloudName)
       ? cloudinaryConfig.cloudName
       : "",
+    apiKey: "557724628995268",
+    apiSecret: "FtUNXoQgvWapTq1vxYOhE9CETj0"
   },
   url: {
     secure: true, // force https
@@ -80,7 +82,6 @@ export function getCloudinaryImage(imageId: string) {
       .replace(/\.[^/.]+$/, "") // Remove file extension if present
       .replace(/^\/+/, "") // Remove leading slashes
       .replace(/\/+/g, "/"); // Normalize multiple slashes to single
-
     return cld.image(cleanId);
   } catch (error) {
     throw new CloudinaryError(
