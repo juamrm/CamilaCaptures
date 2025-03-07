@@ -46,7 +46,11 @@ export function PortfolioGrid() {
       src: image.src,
       imageUrl,
       cloudName,
-      fullUrl: `${baseUrl}/v1/f_auto,q_auto,w_800,c_fill,g_auto/${image.src}`,
+      fullUrl: getImageUrl(image.src),
+      environment: {
+        cloudName: import.meta.env.VITE_CLOUDINARY_CLOUD_NAME,
+        mode: import.meta.env.MODE,
+      },
     });
 
     setFailedImages((prev) => {
@@ -65,8 +69,23 @@ export function PortfolioGrid() {
     // Remove any file extensions and clean up the publicId
     const cleanPublicId = publicId.replace(/\.[^/.]+$/, "");
 
+    // Remove any duplicate 'fotosbebes/' prefix if it exists
+    const normalizedId = cleanPublicId.replace(
+      /^fotosbebes\/fotosbebes\//,
+      "fotosbebes/"
+    );
+
     // Construct the URL with optimal transformations
-    return `${baseUrl}/v1/f_auto,q_auto,w_800,c_fill,g_auto/${cleanPublicId}`;
+    const url = `${baseUrl}/f_auto,q_85,w_800,c_scale/${normalizedId}`;
+    console.log(`Generated URL for ${publicId}:`, {
+      originalId: publicId,
+      cleanId: cleanPublicId,
+      normalizedId,
+      fullUrl: url,
+      cloudName,
+      baseUrl,
+    });
+    return url;
   };
 
   return (

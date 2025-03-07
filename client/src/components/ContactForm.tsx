@@ -33,10 +33,20 @@ export function ContactForm() {
     },
   });
 
-  async function onSubmit() {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
       toast({
         title: "Mensagem enviada!",
         description: "Obrigada por sua mensagem! Entrarei em contato em breve.",
@@ -94,7 +104,7 @@ export function ContactForm() {
               <FormLabel>Telefone</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="+55 (00) 00000-0000"
+                  placeholder="(00) 00000-0000"
                   type="tel"
                   aria-label="Phone"
                   {...field}

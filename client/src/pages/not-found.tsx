@@ -1,28 +1,26 @@
-import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertCircle } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
-      <Card className="w-full max-w-md mx-4">
-        <CardContent className="pt-6">
-          <div className="flex mb-4 gap-2">
-            <AlertCircle className="h-8 w-8 text-red-500" />
-            <h1 className="text-2xl font-bold text-gray-900">
+    <div className="min-h-screen w-full flex items-center justify-center bg-background">
+      <Card className="w-full max-w-md mx-4 border-none shadow-none">
+        <CardHeader className="space-y-1">
+          <div className="flex items-center gap-2">
+            <AlertCircle className="h-8 w-8 text-destructive" />
+            <CardTitle className="text-2xl">
               404 Página não encontrada
-            </h1>
+            </CardTitle>
           </div>
-
-          <p className="mt-4 text-sm text-gray-600">
-            Esta página não está listada ou está em construção.
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <p className="text-sm text-muted-foreground">
+            A página que você procura não existe ou está em construção.
           </p>
-
-          <a
-            href="/"
-            className="mt-6 inline-block text-sm text-blue-600 hover:text-blue-800 hover:underline"
-          >
-            Voltar para a página inicial
-          </a>
+          <Button variant="default" className="w-full" asChild>
+            <a href="/">Voltar para a página inicial</a>
+          </Button>
         </CardContent>
       </Card>
     </div>

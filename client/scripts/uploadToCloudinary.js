@@ -20,7 +20,7 @@ const imagesDir = path.join(process.cwd(), "public", "images", "fotosbebes");
 
 function sanitizePublicId(filename) {
   // Remove file extension
-  let publicId = filename.replace(/\.jpg$/, "");
+  let publicId = filename.replace(/\.[^/.]+$/, "");
 
   // Handle special cases with "2" in the filename
   if (publicId.includes(" 2")) {
@@ -35,6 +35,8 @@ function sanitizePublicId(filename) {
     .replace(/^_|_$/g, "") // Remove leading/trailing underscores
     .replace(/_2$/, "2"); // Remove underscore before "2" at the end
 
+  console.log(`Original filename: ${filename}`);
+  console.log(`Sanitized publicId: ${publicId}`);
   return publicId;
 }
 
@@ -46,9 +48,15 @@ async function uploadImages() {
         file.endsWith(".jpg") && !file.includes("-") && !file.includes("temp")
     );
 
+    console.log(`Found ${imageFiles.length} images to upload`);
+
     for (const file of imageFiles) {
       const filePath = path.join(imagesDir, file);
       const publicId = `fotosbebes/${sanitizePublicId(file)}`;
+
+      console.log(`\nUploading ${file}...`);
+      console.log(`File path: ${filePath}`);
+      console.log(`Public ID: ${publicId}`);
 
       const result = await cloudinary.uploader.upload(filePath, {
         public_id: publicId,
@@ -57,10 +65,11 @@ async function uploadImages() {
         overwrite: true,
       });
 
-      console.log(`Uploaded ${file} to Cloudinary as ${publicId}`);
+      console.log(`Successfully uploaded ${file} to Cloudinary`);
+      console.log(`Public URL: ${result.secure_url}`);
     }
 
-    console.log("All images uploaded successfully!");
+    console.log("\nAll images uploaded successfully!");
   } catch (error) {
     console.error("Error uploading images:", error);
     process.exit(1);

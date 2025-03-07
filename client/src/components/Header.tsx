@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { ThemeToggle } from "./ThemeToggle";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 import { Menu, X } from "lucide-react";
@@ -8,22 +8,32 @@ import { Button } from "./ui/button";
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { scrollToSection } = useSmoothScroll();
+  const [, setLocation] = useLocation();
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    sectionId: string
+    href: string
   ) => {
     e.preventDefault();
-    scrollToSection(sectionId);
+
+    if (href.startsWith("/#")) {
+      // Handle hash links with smooth scroll
+      const sectionId = href.replace("/#", "");
+      scrollToSection(sectionId);
+    } else {
+      // Handle regular routes
+      setLocation(href);
+    }
+
     setIsMenuOpen(false);
   };
 
   const navLinks = [
+    { href: "/#about", label: "About" },
+    { href: "/#services", label: "Services" },
     { href: "/#portfolio", label: "Portfolio" },
-    { href: "/#services", label: "Serviços" },
-    { href: "/#about", label: "Sobre Mim" },
-    { href: "/#hospitals", label: "Hospitais" },
-    { href: "/#contact", label: "Contato" },
+    { href: "/#contact", label: "Contact" },
+    { href: "/test-cloudinary", label: "Test Cloudinary" },
   ];
 
   return (
@@ -61,11 +71,11 @@ export function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                onClick={(e) => handleNavClick(e, link.href.replace("/#", ""))}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className="text-sm font-medium relative group hover:text-primary transition-colors"
               >
                 {link.label}
-                <span className="absolute left-0 bottom-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out" />
+                <span className="absolute left-0 bottom-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-400 ease-out" />
               </a>
             ))}
             <ThemeToggle />
@@ -74,7 +84,11 @@ export function Header() {
 
         {/* Mobile Navigation */}
         <div
-          className={`md:hidden transition-all duration-300 ease-in-out ${isMenuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0 overflow-hidden"}`}
+          className={`md:hidden transition-all duration-300 ease-in-out ${
+            isMenuOpen
+              ? "max-h-64 opacity-100"
+              : "max-h-0 opacity-0 overflow-hidden"
+          }`}
         >
           <nav className="py-4 border-t">
             <div className="flex flex-col gap-4">
@@ -82,13 +96,11 @@ export function Header() {
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={(e) =>
-                    handleNavClick(e, link.href.replace("/#", ""))
-                  }
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className="text-sm font-medium px-4 py-2 relative group hover:text-primary transition-colors"
                 >
                   {link.label}
-                  <span className="absolute left-0 bottom-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out" />
+                  <span className="absolute left-0 bottom-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-400 ease-out" />
                 </a>
               ))}
             </div>
