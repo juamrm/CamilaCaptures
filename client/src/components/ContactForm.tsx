@@ -33,7 +33,7 @@ export function ContactForm() {
     },
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit() {
     try {
       // Simulate form submission
       await new Promise((resolve) => setTimeout(resolve, 1000));

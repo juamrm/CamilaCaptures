@@ -1,5 +1,4 @@
-import { Link } from "wouter";
-import { SiFacebook, SiInstagram } from "react-icons/si";
+import { SiInstagram } from "react-icons/si";
 
 export function Footer() {
   return (
