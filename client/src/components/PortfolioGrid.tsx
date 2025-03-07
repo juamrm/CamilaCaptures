@@ -2,73 +2,47 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Card } from "@/components/ui/card";
 import { PORTFOLIO_IMAGES } from "@/data/portfolioImages";
 import { useState, useEffect } from "react";
-import {
-  getCloudinaryUrl,
-  getImagePlaceholder,
-  preloadImages,
-} from "@/utils/cloudinary";
+import { AdvancedImage } from "@cloudinary/react";
+import { getCloudinaryImage } from "@/utils/cloudinary";
 
 interface ImageState {
   isLoading: boolean;
   error?: string;
-  placeholder?: string;
+  url?: string;
 }
 
 export function PortfolioGrid() {
   const [imageStates, setImageStates] = useState<Map<number, ImageState>>(
     new Map()
   );
-  const [hasPreloaded, setHasPreloaded] = useState(false);
 
-  // Preload first 4 images for better performance
   useEffect(() => {
-    if (!hasPreloaded) {
-      const firstFourImages = PORTFOLIO_IMAGES.slice(0, 4).map(
-        (img) => img.src
-      );
-      preloadImages(firstFourImages)
-        .then(() => setHasPreloaded(true))
-        .catch(console.error);
-    }
-  }, [hasPreloaded]);
-
-  // Initialize placeholders
-  useEffect(() => {
-    PORTFOLIO_IMAGES.forEach((image, index) => {
-      try {
-        const placeholder = getImagePlaceholder(image.src);
-        setImageStates((prev) =>
-          new Map(prev).set(index, {
-            isLoading: true,
-            placeholder,
-          })
-        );
-      } catch (error) {
-        console.error(
-          `Failed to generate placeholder for image ${index}:`,
-          error
-        );
-      }
+    // Log the cloud name and first few image URLs for debugging
+    console.log("Rendering images with following data:");
+    PORTFOLIO_IMAGES.slice(0, 3).forEach((image, index) => {
+      const cldImage = getCloudinaryImage(image.src);
+      console.log(`Image ${index} URL:`, cldImage.toURL());
     });
   }, []);
 
   const handleImageLoad = (index: number) => {
+    console.log(`Image ${index} loaded successfully`);
     setImageStates((prev) => {
       const newStates = new Map(prev);
-      const currentState = newStates.get(index) || { isLoading: false };
-      newStates.set(index, { ...currentState, isLoading: false });
+      newStates.set(index, { isLoading: false });
       return newStates;
     });
   };
 
-  const handleImageError = (index: number) => {
+  const handleImageError = (index: number, error: any) => {
+    console.error(`Image ${index} failed to load:`, error);
     setImageStates((prev) => {
       const newStates = new Map(prev);
-      const currentState = newStates.get(index) || { isLoading: false };
+      const cldImage = getCloudinaryImage(PORTFOLIO_IMAGES[index].src);
       newStates.set(index, {
-        ...currentState,
         isLoading: false,
         error: "Failed to load image",
+        url: cldImage.toURL(),
       });
       return newStates;
     });
@@ -82,47 +56,38 @@ export function PortfolioGrid() {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {failedCount > 0 && (
         <div className="col-span-full text-yellow-600 p-4 bg-yellow-50 rounded-lg">
-          {failedCount} image{failedCount > 1 ? "s" : ""} failed to load.
+          <p>
+            {failedCount} image{failedCount > 1 ? "s" : ""} failed to load.
+          </p>
+          <p className="text-sm mt-2">
+            Check console for detailed error information.
+          </p>
         </div>
       )}
       {PORTFOLIO_IMAGES.map((image, index) => {
         const state = imageStates.get(index) || { isLoading: true };
-        const imageUrl = getCloudinaryUrl(
-          image.src,
-          index < 4 ? "default" : "thumbnail"
-        );
+        const cldImage = getCloudinaryImage(image.src);
 
         return (
           <Card key={index} className="overflow-hidden bg-white relative group">
             <AspectRatio ratio={4 / 3}>
-              {/* Placeholder image */}
-              {state.placeholder && (
-                <img
-                  src={state.placeholder}
-                  alt=""
-                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
-                  style={{
-                    opacity: state.isLoading ? 1 : 0,
-                  }}
-                />
-              )}
-
-              {/* Main image */}
-              <img
-                src={imageUrl}
-                alt={image.alt}
-                className={`object-cover transition-all duration-500 ${
-                  !state.isLoading ? "opacity-100" : "opacity-0"
-                } group-hover:scale-105`}
-                loading={index < 4 ? "eager" : "lazy"}
+              <AdvancedImage
+                cldImg={cldImage}
                 onLoad={() => handleImageLoad(index)}
-                onError={() => handleImageError(index)}
+                onError={(e: Error) => handleImageError(index, e)}
+                alt={image.alt}
+                className={`object-cover transition-all duration-500 group-hover:scale-105 ${
+                  !state.isLoading ? "opacity-100" : "opacity-0"
+                }`}
               />
 
               {/* Error overlay */}
               {state.error && (
-                <div className="absolute inset-0 bg-red-50/90 flex items-center justify-center p-4 text-center text-red-600">
+                <div className="absolute inset-0 bg-red-50/90 flex flex-col items-center justify-center p-4 text-center text-red-600">
                   <p>Failed to load image</p>
+                  {state.url && (
+                    <p className="text-xs mt-2 break-all">URL: {state.url}</p>
+                  )}
                 </div>
               )}
             </AspectRatio>
