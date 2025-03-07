@@ -2,131 +2,133 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Card } from "@/components/ui/card";
 import { PORTFOLIO_IMAGES } from "@/data/portfolioImages";
 import { useState, useEffect } from "react";
+import {
+  getCloudinaryUrl,
+  getImagePlaceholder,
+  preloadImages,
+} from "@/utils/cloudinary";
 
-// Cloudinary configuration
-const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
-const baseUrl = `https://res.cloudinary.com/${cloudName}/image/upload`;
+interface ImageState {
+  isLoading: boolean;
+  error?: string;
+  placeholder?: string;
+}
 
 export function PortfolioGrid() {
-  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
-  const [error, setError] = useState<string | null>(null);
-  const [failedImages, setFailedImages] = useState<Set<number>>(new Set());
+  const [imageStates, setImageStates] = useState<Map<number, ImageState>>(
+    new Map()
+  );
+  const [hasPreloaded, setHasPreloaded] = useState(false);
 
+  // Preload first 4 images for better performance
   useEffect(() => {
-    // Log environment variables and configuration
-    console.log("Cloudinary Configuration:", {
-      cloudName,
-      baseUrl,
-      totalImages: PORTFOLIO_IMAGES.length,
-      imageList: PORTFOLIO_IMAGES.map((img) => img.src),
-    });
-
-    // Validate Cloudinary configuration
-    if (!cloudName) {
-      setError("Cloudinary cloud name is not configured");
-      console.error("Missing Cloudinary cloud name");
+    if (!hasPreloaded) {
+      const firstFourImages = PORTFOLIO_IMAGES.slice(0, 4).map(
+        (img) => img.src
+      );
+      preloadImages(firstFourImages)
+        .then(() => setHasPreloaded(true))
+        .catch(console.error);
     }
+  }, [hasPreloaded]);
+
+  // Initialize placeholders
+  useEffect(() => {
+    PORTFOLIO_IMAGES.forEach((image, index) => {
+      try {
+        const placeholder = getImagePlaceholder(image.src);
+        setImageStates((prev) =>
+          new Map(prev).set(index, {
+            isLoading: true,
+            placeholder,
+          })
+        );
+      } catch (error) {
+        console.error(
+          `Failed to generate placeholder for image ${index}:`,
+          error
+        );
+      }
+    });
   }, []);
 
   const handleImageLoad = (index: number) => {
-    console.log(
-      `Successfully loaded image ${index}:`,
-      PORTFOLIO_IMAGES[index].src
-    );
-    setLoadedImages((prev) => {
-      const newSet = new Set(prev);
-      newSet.add(index);
-      return newSet;
+    setImageStates((prev) => {
+      const newStates = new Map(prev);
+      const currentState = newStates.get(index) || { isLoading: false };
+      newStates.set(index, { ...currentState, isLoading: false });
+      return newStates;
     });
   };
 
-  const handleImageError = (index: number, imageUrl: string) => {
-    const image = PORTFOLIO_IMAGES[index];
-    console.error(`Failed to load image ${index}:`, {
-      src: image.src,
-      imageUrl,
-      cloudName,
-      fullUrl: getImageUrl(image.src),
-      environment: {
-        cloudName: import.meta.env.VITE_CLOUDINARY_CLOUD_NAME,
-        mode: import.meta.env.MODE,
-      },
+  const handleImageError = (index: number) => {
+    setImageStates((prev) => {
+      const newStates = new Map(prev);
+      const currentState = newStates.get(index) || { isLoading: false };
+      newStates.set(index, {
+        ...currentState,
+        isLoading: false,
+        error: "Failed to load image",
+      });
+      return newStates;
     });
-
-    setFailedImages((prev) => {
-      const newSet = new Set(prev);
-      newSet.add(index);
-      return newSet;
-    });
-
-    // Only set the error message if this is the first failed image
-    if (failedImages.size === 0) {
-      setError(`Failed to load images. Please check the console for details.`);
-    }
   };
 
-  const getImageUrl = (publicId: string) => {
-    // Remove any file extensions and clean up the publicId
-    const cleanPublicId = publicId.replace(/\.[^/.]+$/, "");
-
-    // Remove any duplicate 'fotosbebes/' prefix if it exists
-    const normalizedId = cleanPublicId.replace(
-      /^fotosbebes\/fotosbebes\//,
-      "fotosbebes/"
-    );
-
-    // Construct the URL with optimal transformations
-    const url = `${baseUrl}/f_auto,q_85,w_800,c_scale/${normalizedId}`;
-    console.log(`Generated URL for ${publicId}:`, {
-      originalId: publicId,
-      cleanId: cleanPublicId,
-      normalizedId,
-      fullUrl: url,
-      cloudName,
-      baseUrl,
-    });
-    return url;
-  };
+  const failedCount = Array.from(imageStates.values()).filter(
+    (state) => state.error
+  ).length;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {error && (
-        <div className="col-span-full text-red-500 p-4 bg-red-50 rounded-lg">
-          Error: {error}
+      {failedCount > 0 && (
+        <div className="col-span-full text-yellow-600 p-4 bg-yellow-50 rounded-lg">
+          {failedCount} image{failedCount > 1 ? "s" : ""} failed to load.
         </div>
       )}
       {PORTFOLIO_IMAGES.map((image, index) => {
-        const imageUrl = getImageUrl(image.src);
+        const state = imageStates.get(index) || { isLoading: true };
+        const imageUrl = getCloudinaryUrl(
+          image.src,
+          index < 4 ? "default" : "thumbnail"
+        );
 
         return (
-          <Card key={index} className="overflow-hidden bg-white">
+          <Card key={index} className="overflow-hidden bg-white relative group">
             <AspectRatio ratio={4 / 3}>
+              {/* Placeholder image */}
+              {state.placeholder && (
+                <img
+                  src={state.placeholder}
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
+                  style={{
+                    opacity: state.isLoading ? 1 : 0,
+                  }}
+                />
+              )}
+
+              {/* Main image */}
               <img
                 src={imageUrl}
                 alt={image.alt}
                 className={`object-cover transition-all duration-500 ${
-                  loadedImages.has(index)
-                    ? "opacity-100 scale-100"
-                    : "opacity-0 scale-105"
-                } hover:scale-105`}
+                  !state.isLoading ? "opacity-100" : "opacity-0"
+                } group-hover:scale-105`}
                 loading={index < 4 ? "eager" : "lazy"}
-                style={{
-                  backgroundColor: "#f3f4f6",
-                  filter: loadedImages.has(index) ? "none" : "blur(10px)",
-                }}
                 onLoad={() => handleImageLoad(index)}
-                onError={() => handleImageError(index, imageUrl)}
+                onError={() => handleImageError(index)}
               />
+
+              {/* Error overlay */}
+              {state.error && (
+                <div className="absolute inset-0 bg-red-50/90 flex items-center justify-center p-4 text-center text-red-600">
+                  <p>Failed to load image</p>
+                </div>
+              )}
             </AspectRatio>
           </Card>
         );
       })}
-      {failedImages.size > 0 && (
-        <div className="col-span-full text-yellow-600 p-4 bg-yellow-50 rounded-lg">
-          {failedImages.size} image{failedImages.size > 1 ? "s" : ""} failed to
-          load. Check the console for details.
-        </div>
-      )}
     </div>
   );
 }

@@ -33,7 +33,6 @@ export function Header() {
     { href: "/#services", label: "Services" },
     { href: "/#portfolio", label: "Portfolio" },
     { href: "/#contact", label: "Contact" },
-    { href: "/test-cloudinary", label: "Test Cloudinary" },
   ];
 
   return (

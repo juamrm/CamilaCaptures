@@ -1,65 +1,102 @@
-export function getCloudinaryUrl(imageId: string) {
-  const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
-  if (!cloudName) {
-    throw new Error("Cloudinary cloud name is not configured");
-  }
-
-  const baseUrl = `https://res.cloudinary.com/${cloudName}/image/upload`;
-  // More reliable transformations that work with most image types
-  const transformations = "f_auto,q_85,w_800,c_scale";
-
-  // Clean and prepare the image ID
-  const cleanImageId = imageId
-    .replace(/^\/+/, "") // Remove leading slashes
-    .replace(/\/+/g, "/") // Replace multiple slashes with single slash
-    .replace(/[^a-zA-Z0-9\/_-]/g, ""); // Remove any invalid characters
-
-  // Don't encode the entire path, just encode special characters
-  const encodedImageId = cleanImageId
-    .split("/")
-    .map((part) => encodeURIComponent(part))
-    .join("/");
-
-  const url = `${baseUrl}/${transformations}/${encodedImageId}`;
-  console.log("Generated Cloudinary URL:", url); // Debug log
-  return url;
+export interface CloudinaryConfig {
+  cloudName: string;
+  transformations?: {
+    default: string;
+    thumbnail: string;
+    fullSize: string;
+    placeholder: string;
+  };
 }
 
-export function getCloudinaryUrlWithCustomTransformations(
+const DEFAULT_TRANSFORMATIONS = {
+  default: "f_auto,q_85,w_800,c_scale",
+  thumbnail: "f_auto,q_70,w_400,c_scale",
+  fullSize: "f_auto,q_90,w_1200,c_scale",
+  placeholder: "f_auto,q_10,w_50,e_blur:1000,c_scale",
+};
+
+export const cloudinaryConfig: CloudinaryConfig = {
+  cloudName: import.meta.env.VITE_CLOUDINARY_CLOUD_NAME,
+  transformations: DEFAULT_TRANSFORMATIONS,
+};
+
+function cleanImageId(publicId: string): string {
+  return publicId
+    .replace(/^\/+/, "")
+    .replace(/\/+/g, "/")
+    .replace(/\.[^/.]+$/, "")
+    .replace(/^fotosbebes\/fotosbebes\//, "fotosbebes/");
+}
+
+export class CloudinaryError extends Error {
+  constructor(
+    message: string,
+    public readonly imageId?: string
+  ) {
+    super(message);
+    this.name = "CloudinaryError";
+  }
+}
+
+export function getCloudinaryUrl(
   imageId: string,
-  transformations: string
-) {
-  const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
-  if (!cloudName) {
-    throw new Error("Cloudinary cloud name is not configured");
+  transformation: keyof typeof DEFAULT_TRANSFORMATIONS = "default"
+): string {
+  if (!cloudinaryConfig.cloudName) {
+    throw new CloudinaryError("Cloudinary cloud name is not configured");
   }
 
-  const baseUrl = `https://res.cloudinary.com/${cloudName}/image/upload`;
+  if (!imageId) {
+    throw new CloudinaryError("Image ID is required");
+  }
 
-  // Clean and prepare the image ID
-  const cleanImageId = imageId
-    .replace(/^\/+/, "") // Remove leading slashes
-    .replace(/\/+/g, "/") // Replace multiple slashes with single slash
-    .replace(/[^a-zA-Z0-9\/_-]/g, ""); // Remove any invalid characters
+  try {
+    const baseUrl = `https://res.cloudinary.com/${cloudinaryConfig.cloudName}/image/upload`;
+    const transformationType =
+      cloudinaryConfig.transformations?.[transformation] ||
+      DEFAULT_TRANSFORMATIONS.default;
+    const cleanId = cleanImageId(imageId);
 
-  // Don't encode the entire path, just encode special characters
-  const encodedImageId = cleanImageId
-    .split("/")
-    .map((part) => encodeURIComponent(part))
-    .join("/");
-
-  const url = `${baseUrl}/${transformations}/${encodedImageId}`;
-  console.log("Generated Cloudinary URL:", url); // Debug log
-  return url;
+    return `${baseUrl}/${transformationType}/${cleanId}`;
+  } catch (error) {
+    throw new CloudinaryError(
+      `Failed to generate Cloudinary URL: ${error instanceof Error ? error.message : "Unknown error"}`,
+      imageId
+    );
+  }
 }
 
-export function validateCloudinaryConfig() {
-  const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
-  if (!cloudName) {
-    return {
-      isValid: false,
-      error: "Cloudinary cloud name is not configured",
-    };
+export function getImagePlaceholder(imageId: string): string {
+  return getCloudinaryUrl(imageId, "placeholder");
+}
+
+export function preloadImage(imageId: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.src = getCloudinaryUrl(imageId);
+    img.onload = () => resolve();
+    img.onerror = () =>
+      reject(new CloudinaryError("Failed to preload image", imageId));
+  });
+}
+
+export async function preloadImages(imageIds: string[]): Promise<void[]> {
+  const results = await Promise.allSettled(imageIds.map(preloadImage));
+
+  const errors = results
+    .filter(
+      (result): result is PromiseRejectedResult => result.status === "rejected"
+    )
+    .map((result) => result.reason);
+
+  if (errors.length > 0) {
+    console.warn("Some images failed to preload:", errors);
   }
-  return { isValid: true };
+
+  return results
+    .filter(
+      (result): result is PromiseFulfilledResult<void> =>
+        result.status === "fulfilled"
+    )
+    .map((result) => result.value);
 }
