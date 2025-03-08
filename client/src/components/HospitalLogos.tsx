@@ -59,10 +59,12 @@ export function HospitalLogos() {
       {HOSPITAL_LOGOS.map((hospital, index) => (
         <Card
           key={index}
-          className="p-6 flex items-center justify-center bg-white dark:bg-white h-[140px] shadow-sm hover:shadow-md transition-shadow"
+          className="p-6 flex items-center justify-center bg-gray-50 dark:bg-gray-50 h-[140px] shadow-sm hover:shadow-md transition-shadow"
         >
           <div
-            className={`w-full h-full flex items-center justify-center rounded-lg ${hospital.containerClassName || ""}`}
+            className={`w-full h-full flex items-center justify-center rounded-lg ${
+              hospital.containerClassName ? "bg-gray-50 rounded-lg p-2" : ""
+            }`}
           >
             <img
               src={hospital.logo}

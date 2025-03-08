@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { Helmet } from "react-helmet";
 import { Router } from "./Router";
+import { CookieConsent } from "@/components/CookieConsent";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ function App() {
       </Helmet>
       <Router />
       <Toaster />
+      <CookieConsent />
     </QueryClientProvider>
   );
 }

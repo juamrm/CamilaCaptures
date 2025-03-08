@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Helmet>
-        <title>Home - Camila Amorim</title>
+        <title>Fotografias de Parto - Camila Amorim</title>
         <meta
           name="description"
           content="Bem-vindo(a) ao portfolio de Camila Amorim. Capturando os primeiros momentos da vida com sensibilidade e autenticidade."

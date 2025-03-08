@@ -53,7 +53,7 @@ export function Header() {
           <Link
             href="/"
             onClick={handleLogoClick}
-            className="text-lg md:text-xl font-medium tracking-tight font-manrope hover:text-primary transition-colors"
+            className="text-xl md:text-2xl font-light tracking-wider font-manrope hover:text-primary transition-colors duration-300"
           >
             Camila Amorim
           </Link>
@@ -83,7 +83,7 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-sm font-medium relative group hover:text-primary transition-colors"
+                className="text-sm font-inter font-medium tracking-wide relative group hover:text-primary transition-colors duration-300"
               >
                 {link.label}
                 <span className="absolute left-0 bottom-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-400 ease-out" />
@@ -108,7 +108,7 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-sm font-medium px-4 py-2 relative group hover:text-primary transition-colors"
+                  className="text-sm font-inter font-medium tracking-wide px-4 py-2 relative group hover:text-primary transition-colors duration-300"
                 >
                   {link.label}
                   <span className="absolute left-0 bottom-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-400 ease-out" />
