@@ -49,18 +49,14 @@ export default function Home() {
             {/* Hero Text */}
             <div className="w-full md:w-2/3 text-center md:text-left space-y-4">
               <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight font-manrope">
-                Fotografias de partos e bebês, capturando os primeiros momentos.
+                O nascimento do seu bebê merece ser eternizado.
               </h1>
               <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto md:mx-0">
-                Fotografias de partos que contam histórias únicas com
-                <span
-                  className="font-bold text-primary"
-                  aria-label="sensibilidade"
-                >
-                  {" "}
-                  sensibilidade
-                </span>{" "}
-                e<span className="font-bold text-primary"> autenticidade</span>
+                Fotografias de partos que capturam emoções genuínas e contam
+                histórias únicas com
+                <span className="font-bold text-primary"> sensibilidade</span>,
+                <span className="font-bold text-primary"> respeito</span> e
+                <span className="font-bold text-primary"> autenticidade</span>
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start pt-4">
                 <a
@@ -103,29 +99,30 @@ export default function Home() {
                 <h2 className="text-xl md:text-2xl font-bold">Sobre Mim</h2>
                 <div className="prose dark:prose-invert prose-sm md:prose-base max-w-none space-y-3">
                   <p className="text-muted-foreground">
-                    Sou Camila, fotógrafa especializada em registrar o
-                    nascimento do seu bebê com sensibilidade e técnica,
-                    transformando emoções em memórias inesquecíveis.
+                    Olá, sou Camila, fotógrafa apaixonada por contar histórias
+                    através da minha lente. Especializada em fotografia de
+                    partos, transformo momentos inesquecíveis em memórias
+                    eternas, com olhar sensível e técnica apurada.
                   </p>
                   <p className="text-muted-foreground">
                     Com três anos de experiência e formação pelo Espaço da
-                    Fotografia e Senac, capturo momentos únicos com olhar atento
-                    e artístico.
+                    Fotografia e Senac, tenho o privilégio de registrar o amor e
+                    a emoção do primeiro encontro entre mães, pais e bebês.
                   </p>
                   <p className="text-muted-foreground">
-                    Sou credenciada para atuar em oito hospitais de São Paulo,
+                    💙 Credenciada para atuar em oito hospitais de São Paulo,
                     incluindo Grupo Santa Joana, Pro Matre, Santa Maria, São
-                    Luiz Anália Franco, Star e outros, garantindo minha presença
-                    no seu momento especial.
+                    Luiz Anália Franco, Star e outros, estou preparada para
+                    estar ao seu lado nesse momento tão especial.
                   </p>
                   <p className="text-muted-foreground">
-                    Além dos partos, realizo ensaios de modelos, eventos e
-                    retrato.
+                    Além do registro de partos, também realizo ensaios de
+                    gestantes, newborn, retratos e eventos, sempre com o
+                    compromisso de capturar a essência de cada história.
                   </p>
                   <p className="text-muted-foreground">
-                    Se você deseja fotos cheias de emoção, sensibilidade e
-                    autenticidade, será um prazer fazer parte dessa história!
-                    ✨📷
+                    Se você busca fotos emocionantes, sensíveis e autênticas,
+                    será um prazer fazer parte desse capítulo da sua vida! ✨📸
                   </p>
                 </div>
               </CardContent>
@@ -159,8 +156,9 @@ export default function Home() {
               Portfólio
             </h2>
             <p className="text-muted-foreground">
-              Veja alguns dos meus trabalhos. Ficarei feliz em compartilhar mais
-              imagens com você.
+              Cada foto conta uma história. Veja alguns dos momentos especiais
+              que tive o privilégio de registrar. Quer conhecer mais? Vamos
+              conversar!
             </p>
           </div>
           <PortfolioGrid />
@@ -192,8 +190,10 @@ export default function Home() {
                     Vamos conversar?
                   </h3>
                   <p className="text-muted-foreground mb-6">
-                    Estou aqui para capturar seus momentos especiais. Entre em
-                    contato e vamos criar memórias juntos.
+                    Se você deseja eternizar esse momento único, estou aqui para
+                    transformar sua história em imagens inesquecíveis. Preencha
+                    o formulário ao lado ou me envie uma mensagem diretamente!
+                    📍 Atendendo em São Paulo e região.
                   </p>
                 </div>
 
