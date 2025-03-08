@@ -13,8 +13,8 @@ export default function Portfolio() {
       </Helmet>
       <h1 className="text-4xl font-bold mb-8 font-manrope">Portfolio</h1>
       <p className="text-muted-foreground mb-8 max-w-2xl">
-        Veja alguns dos meus trabalhos. Ficarei feliz em compartilhar mais
-        imagens com você.
+        Cada foto conta uma história. Veja alguns dos momentos especiais que
+        tive o privilégio de registrar. Quer conhecer mais? Vamos conversar!
       </p>
       <PortfolioGrid />
     </div>
