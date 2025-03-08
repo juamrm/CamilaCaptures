@@ -116,9 +116,9 @@ export default function Home() {
                     estar ao seu lado nesse momento tão especial.
                   </p>
                   <p className="text-muted-foreground">
-                    Além do registro de partos, também realizo ensaios de
-                    gestantes, newborn, retratos e eventos, sempre com o
-                    compromisso de capturar a essência de cada história.
+                    Além do registro de partos, ensaios de modelos, retratos e
+                    eventos, sempre com o compromisso de capturar a essência de
+                    cada história.
                   </p>
                   <p className="text-muted-foreground">
                     Se você busca fotos emocionantes, sensíveis e autênticas,
@@ -183,7 +183,7 @@ export default function Home() {
                     Se você deseja eternizar esse momento único, estou aqui para
                     transformar sua história em imagens inesquecíveis. Preencha
                     o formulário ao lado ou me envie uma mensagem diretamente!
-                    📍 Atendendo em São Paulo e região.
+                    Atendendo em São Paulo e região.
                   </p>
                 </div>
 
