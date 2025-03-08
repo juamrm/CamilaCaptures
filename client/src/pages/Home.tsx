@@ -172,17 +172,7 @@ export default function Home() {
             Entre em contato
           </h2>
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 max-w-6xl mx-auto">
-            {/* Left side - Contact Form */}
-            <div className="bg-background rounded-2xl p-6 md:p-8 shadow-sm">
-              <div className="max-w-md mx-auto">
-                <h3 className="text-xl font-semibold mb-6">
-                  Envie sua mensagem
-                </h3>
-                <ContactForm />
-              </div>
-            </div>
-
-            {/* Right side - Contact Info */}
+            {/* Left side - Contact Info */}
             <div className="flex flex-col justify-center">
               <div className="space-y-8">
                 <div>
@@ -244,6 +234,16 @@ export default function Home() {
                     </div>
                   </a>
                 </div>
+              </div>
+            </div>
+
+            {/* Right side - Contact Form */}
+            <div className="bg-background rounded-2xl p-6 md:p-8 shadow-sm">
+              <div className="max-w-md mx-auto">
+                <h3 className="text-xl font-semibold mb-6">
+                  Envie sua mensagem
+                </h3>
+                <ContactForm />
               </div>
             </div>
           </div>
