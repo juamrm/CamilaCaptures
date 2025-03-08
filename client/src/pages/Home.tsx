@@ -49,7 +49,7 @@ export default function Home() {
             {/* Hero Text */}
             <div className="w-full md:w-2/3 text-center md:text-left space-y-4">
               <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight font-manrope">
-                Fotografias de parto e bebês, capturando os primeiros momentos.
+                Fotografias de partos e bebês, capturando os primeiros momentos.
               </h1>
               <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto md:mx-0">
                 Fotografias de partos que contam histórias únicas com
