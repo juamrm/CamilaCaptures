@@ -14,7 +14,7 @@ import { ScrollButton } from "@/components/ScrollButton";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-background via-background to-background flex flex-col">
       <Helmet>
         <title>Fotografias de Parto - Camila Amorim</title>
         <meta
@@ -48,10 +48,10 @@ export default function Home() {
             </div>
             {/* Hero Text */}
             <div className="w-full md:w-2/3 text-center md:text-left space-y-4">
-              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight font-manrope">
+              <h1 className="text-xl md:text-2xl lg:text-3xl font-bold leading-tight font-manrope">
                 O nascimento do seu bebê merece ser eternizado.
               </h1>
-              <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto md:mx-0">
+              <p className="text-xs md:text-sm text-muted-foreground max-w-xl mx-auto md:mx-0">
                 Fotografias de partos que capturam emoções genuínas e contam
                 histórias únicas com
                 <span className="font-bold text-primary"> sensibilidade</span>,
@@ -78,7 +78,10 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-12 md:py-16 px-4 bg-muted/50">
+      <section
+        id="about"
+        className="py-12 md:py-16 px-4 bg-gradient-to-b from-background/5 via-muted/30 to-background/5"
+      >
         <div className="container mx-auto">
           <Card className="max-w-5xl mx-auto overflow-hidden">
             <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-stretch">
@@ -96,8 +99,8 @@ export default function Home() {
                 </div>
               </div>
               <CardContent className="p-6 md:p-8 flex flex-col justify-center order-1 space-y-4">
-                <h2 className="text-xl md:text-2xl font-bold">Sobre Mim</h2>
-                <div className="prose dark:prose-invert prose-sm md:prose-base max-w-none space-y-3">
+                <h2 className="text-lg md:text-xl font-bold">Sobre Mim</h2>
+                <div className="prose dark:prose-invert prose-xs md:prose-sm max-w-none space-y-3">
                   <p className="text-muted-foreground">
                     Olá, sou Camila, fotógrafa apaixonada por contar histórias
                     através da minha lente. Especializada em fotografia de
@@ -137,10 +140,10 @@ export default function Home() {
       {/* Hospital Accreditation Section */}
       <section id="hospitals" className="py-12 md:py-16 px-4">
         <div className="container mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">
+          <h2 className="text-lg md:text-xl font-bold mb-6 text-center">
             Hospitais Acreditados
           </h2>
-          <p className="text-muted-foreground text-center mb-8 max-w-2xl mx-auto">
+          <p className="text-xs md:text-sm text-muted-foreground text-center mb-8 max-w-2xl mx-auto">
             Estou credenciada para trabalhar em oito hospitais de São Paulo,
             garantindo minha presença no seu momento especial.
           </p>
@@ -149,13 +152,16 @@ export default function Home() {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="py-12 md:py-16 px-4 bg-muted/50">
+      <section
+        id="portfolio"
+        className="py-12 md:py-16 px-4 bg-gradient-to-b from-background/5 via-muted/30 to-background/5"
+      >
         <div className="container mx-auto">
           <div className="max-w-2xl mx-auto text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 font-manrope">
+            <h2 className="text-lg md:text-xl font-bold mb-4 font-manrope">
               Portfólio
             </h2>
-            <p className="text-muted-foreground">
+            <p className="text-xs md:text-sm text-muted-foreground">
               Cada foto conta uma história. Veja alguns dos momentos especiais
               que tive o privilégio de registrar. Quer conhecer mais? Vamos
               conversar!
@@ -166,9 +172,12 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-12 md:py-16 bg-muted/30">
+      <section
+        id="contact"
+        className="py-12 md:py-16 bg-gradient-to-b from-background/5 via-muted/30 to-background/5"
+      >
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
+          <h2 className="text-lg md:text-xl font-bold mb-8 text-center">
             Entre em contato
           </h2>
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 max-w-6xl mx-auto">
@@ -176,10 +185,10 @@ export default function Home() {
             <div className="flex flex-col justify-center">
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-xl font-semibold mb-4">
+                  <h3 className="text-lg font-semibold mb-4">
                     Vamos conversar?
                   </h3>
-                  <p className="text-muted-foreground mb-6">
+                  <p className="text-xs md:text-sm text-muted-foreground mb-6">
                     Se você deseja eternizar esse momento único, estou aqui para
                     transformar sua história em imagens inesquecíveis. Preencha
                     o formulário ao lado ou me envie uma mensagem diretamente!
@@ -199,7 +208,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="font-medium">WhatsApp</p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xs text-muted-foreground">
                         11 99862-4083
                       </p>
                     </div>
@@ -228,7 +237,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="font-medium">Email</p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xs text-muted-foreground">
                         camilansamorim@gmail.com
                       </p>
                     </div>

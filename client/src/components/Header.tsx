@@ -95,23 +95,23 @@ export function Header() {
 
         {/* Mobile Navigation */}
         <div
-          className={`md:hidden transition-all duration-300 ease-in-out ${
+          className={`md:hidden transition-all duration-500 ease-in-out ${
             isMenuOpen
               ? "max-h-64 opacity-100"
               : "max-h-0 opacity-0 overflow-hidden"
           }`}
         >
-          <nav className="py-4 border-t">
-            <div className="flex flex-col gap-4">
+          <nav className="py-6 border-t">
+            <div className="flex flex-col gap-4 pb-4">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-sm font-inter font-medium tracking-wide px-4 py-2 relative group hover:text-primary transition-colors duration-300"
+                  className="text-sm font-inter font-medium tracking-wide px-4 py-2 relative group hover:text-primary transition-colors duration-400"
                 >
                   {link.label}
-                  <span className="absolute left-0 bottom-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-400 ease-out" />
+                  <span className="absolute left-0 bottom-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out" />
                 </a>
               ))}
             </div>
