@@ -1,110 +1,85 @@
 import { useState, useEffect } from "react";
 
 interface ImageStatus {
-  publicId: string;
+  imagePath: string;
   status: "loading" | "success" | "error";
   error?: string;
 }
 
-function sanitizePublicId(publicId: string): string {
-  // Remove the duplicate 'fotosbebes/' prefix if it exists
-  let cleanId = publicId.replace(/^fotosbebes\/fotosbebes\//, "fotosbebes/");
-
-  // Replace spaces and commas with underscores
-  cleanId = cleanId.replace(/[\s,]+/g, "_");
-
+function sanitizeImagePath(path: string): string {
   // Remove any trailing spaces
-  cleanId = cleanId.trim();
-
-  return cleanId;
+  return path.trim();
 }
 
 export function ImageVerification() {
   const [imageStatuses, setImageStatuses] = useState<ImageStatus[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const publicIds = [
-    "fotosbebes/2024_14_24_47_20250305_134228_0000",
-    "fotosbebes/2024_12_53_51_20250305_134703_0000",
-    "fotosbebes/2024_12_38_09_20250305_130054_0000",
-    "fotosbebes/2024_12_18_01_20250305_134723_0000",
-    "fotosbebes/2024_10_22_53_20250305_125149_0000",
-    "fotosbebes/_MG_7479_20250305_125949_0000",
-    "fotosbebes/IMG_9901",
-    "fotosbebes/IMG_8688",
-    "fotosbebes/IMG_8463",
-    "fotosbebes/IMG_7792",
-    "fotosbebes/IMG_4429_20250305_125437_0000",
-    "fotosbebes/IMG_3904",
-    "fotosbebes/2024_20_54_26_20250305_125940_0000",
-    "fotosbebes/2024_20_49_19_20250305_130010_0000",
-    "fotosbebes/2024_20_49_19_20250305_130010_0000_2",
-    "fotosbebes/2024_18_38_29_20250305_125832_0000",
-    "fotosbebes/2024_18_38_29_20250305_125832_0000_2",
-    "fotosbebes/2024_18_28_19_20250305_134254_0000",
-    "fotosbebes/2024_14_49_31_20250305_134348_0000",
-    "fotosbebes/2024_14_26_46_20250305_134217_0000",
-    "fotosbebes/2024_14_24_47_20250305_134228_0000",
-    "fotosbebes/2024_12_53_51_20250305_134703_0000",
-    "fotosbebes/2024_12_38_09_20250305_130054_0000",
-    "fotosbebes/2024_12_18_01_20250305_134723_0000",
-    "fotosbebes/2024_10_22_53_20250305_125149_0000",
+  const imagePaths = [
+    "/images/2024_14_24_47_20250305_134228_0000.webp",
+    "/images/2024_12_53_51_20250305_134703_0000.webp",
+    "/images/2024_12_38_09_20250305_130054_0000.webp",
+    "/images/2024_12_18_01_20250305_134723_0000.webp",
+    "/images/2024_10_22_53_20250305_125149_0000.webp",
+    "/images/_MG_7479_20250305_125949_0000.webp",
+    "/images/IMG_9901.webp",
+    "/images/IMG_8688.webp",
+    "/images/IMG_8463.webp",
+    "/images/IMG_7792.webp",
+    "/images/IMG_4429_20250305_125437_0000.webp",
+    "/images/IMG_3904.webp",
+    "/images/2024_20_54_26_20250305_125940_0000.webp",
+    "/images/2024_20_49_19_20250305_130010_0000.webp",
+    "/images/2024_20_49_19_20250305_130010_0000_2.webp",
+    "/images/2024_18_38_29_20250305_125832_0000.webp",
+    "/images/2024_18_38_29_20250305_125832_0000_2.webp",
+    "/images/2024_18_28_19_20250305_134254_0000.webp",
+    "/images/2024_14_49_31_20250305_134348_0000.webp",
+    "/images/2024_14_26_46_20250305_134217_0000.webp",
+    "/images/2024_14_24_47_20250305_134228_0000.webp",
+    "/images/2024_12_53_51_20250305_134703_0000.webp",
+    "/images/2024_12_38_09_20250305_130054_0000.webp",
+    "/images/2024_12_18_01_20250305_134723_0000.webp",
+    "/images/2024_10_22_53_20250305_125149_0000.webp",
   ];
 
   useEffect(() => {
-    const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
-    if (!cloudName) {
-      setImageStatuses(
-        publicIds.map((id) => ({
-          publicId: id,
-          status: "error",
-          error: "Cloudinary cloud name not configured",
-        }))
-      );
-      setIsLoading(false);
-      return;
-    }
-
-    const baseUrl = `https://res.cloudinary.com/${cloudName}/image/upload`;
-
     // Initialize statuses
     setImageStatuses(
-      publicIds.map((id) => ({
-        publicId: id,
+      imagePaths.map((path) => ({
+        imagePath: path,
         status: "loading",
       }))
     );
 
     // Check each image
-    publicIds.forEach((publicId, index) => {
-      const sanitizedId = sanitizePublicId(publicId);
-      const imageUrl = `${baseUrl}/v1/f_auto,q_auto,w_800,c_fill,g_auto/${sanitizedId}`;
+    imagePaths.forEach((imagePath, index) => {
+      const sanitizedPath = sanitizeImagePath(imagePath);
+      const img = new Image();
+      img.src = sanitizedPath;
 
-      fetch(imageUrl, { method: "HEAD" })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          setImageStatuses((prev) => {
-            const newStatuses = [...prev];
-            newStatuses[index] = {
-              publicId: sanitizedId,
-              status: "success",
-            };
-            return newStatuses;
-          });
-        })
-        .catch((error) => {
-          setImageStatuses((prev) => {
-            const newStatuses = [...prev];
-            newStatuses[index] = {
-              publicId: sanitizedId,
-              status: "error",
-              error: error.message,
-            };
-            return newStatuses;
-          });
+      img.onload = () => {
+        setImageStatuses((prev) => {
+          const newStatuses = [...prev];
+          newStatuses[index] = {
+            imagePath: sanitizedPath,
+            status: "success",
+          };
+          return newStatuses;
         });
+      };
+
+      img.onerror = () => {
+        setImageStatuses((prev) => {
+          const newStatuses = [...prev];
+          newStatuses[index] = {
+            imagePath: sanitizedPath,
+            status: "error",
+            error: "Failed to load image",
+          };
+          return newStatuses;
+        });
+      };
     });
 
     setIsLoading(false);
@@ -138,7 +113,9 @@ export function ImageVerification() {
                 : "bg-red-50 border-red-200"
             }`}
           >
-            <div className="font-mono text-sm break-all">{status.publicId}</div>
+            <div className="font-mono text-sm break-all">
+              {status.imagePath}
+            </div>
             <div
               className={`mt-2 ${
                 status.status === "success" ? "text-green-600" : "text-red-600"

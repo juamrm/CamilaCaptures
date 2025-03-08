@@ -9,7 +9,17 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    assetsDir: "assets",
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, "index.html"),
+      },
+    },
+  },
+  publicDir: "public",
   server: {
-    port: 5173,
+    port: 3000,
+    host: true,
   },
 });

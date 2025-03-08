@@ -6,12 +6,10 @@
     "preview": "vite preview",
     "convert-images": "node scripts/convertToWebp.js",
     "optimize-images": "node scripts/optimizeImages.js",
-    "upload-to-cloudinary": "node scripts/uploadToCloudinary.js",
-    "cleanup-images": "node scripts/cleanupImages.js"
+    "cleanup-images": "node scripts/cleanupImages.js",
+    "create-placeholder": "node scripts/createPlaceholder.js"
   },
   "dependencies": {
-    "@cloudinary/react": "^1.14.1",
-    "@cloudinary/url-gen": "^1.21.0",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.7.0",
@@ -19,6 +17,7 @@
     "lucide-react": "^0.344.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "sharp": "^0.33.2",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7"
   },

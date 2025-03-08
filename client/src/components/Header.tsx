@@ -96,7 +96,7 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-sm font-medium px-4 py-2 relative group hover:text-primary transition-colors"
+                  className="text-sm font-medium px-4 py-2 relative group hover:text-primary transition-colors font-inter"
                 >
                   {link.label}
                   <span className="absolute left-0 bottom-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-400 ease-out" />
