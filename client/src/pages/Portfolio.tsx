@@ -8,11 +8,11 @@ export default function Portfolio() {
         <title>Portfolio - Camila Amorim</title>
         <meta
           name="description"
-          content="Explore the portfolio of Camila Amorim, showcasing the beauty and emotion of birth photography."
+          content="Explore o portfolio de Camila Amorim, mostrando a beleza e emoção da fotografia de parto."
         />
       </Helmet>
-      <h1 className="text-4xl font-bold mb-8">Portfolio</h1>
-      <p className="text-muted-foreground mb-8">
+      <h1 className="text-4xl font-bold mb-8 font-manrope">Portfolio</h1>
+      <p className="text-muted-foreground mb-8 max-w-2xl">
         Veja alguns dos meus trabalhos. Ficarei feliz em compartilhar mais
         imagens com você.
       </p>

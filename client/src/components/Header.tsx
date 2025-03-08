@@ -8,7 +8,7 @@ import { Button } from "./ui/button";
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { scrollToSection } = useSmoothScroll();
-  const [, setLocation] = useLocation();
+  const [location, setLocation] = useLocation();
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -28,11 +28,22 @@ export function Header() {
     setIsMenuOpen(false);
   };
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    if (location === "/") {
+      // If already on home page, scroll to top
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      // If on another page, navigate to home
+      setLocation("/");
+    }
+  };
+
   const navLinks = [
-    { href: "/#about", label: "About" },
-    { href: "/#services", label: "Services" },
-    { href: "/#portfolio", label: "Portfolio" },
-    { href: "/#contact", label: "Contact" },
+    { href: "/#about", label: "Sobre" },
+    { href: "/#services", label: "Serviços" },
+    { href: "/#portfolio", label: "Portfólio" },
+    { href: "/#contact", label: "Contato" },
   ];
 
   return (
@@ -41,7 +52,8 @@ export function Header() {
         <div className="h-20 flex items-center justify-between">
           <Link
             href="/"
-            className="text-xl md:text-2xl font-semibold tracking-tight"
+            onClick={handleLogoClick}
+            className="text-lg md:text-xl font-medium tracking-tight font-manrope hover:text-primary transition-colors"
           >
             Camila Amorim
           </Link>
@@ -53,7 +65,7 @@ export function Header() {
               variant="ghost"
               size="icon"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
               className="hover:bg-muted/50"
             >
               {isMenuOpen ? (
@@ -96,7 +108,7 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-sm font-medium px-4 py-2 relative group hover:text-primary transition-colors font-inter"
+                  className="text-sm font-medium px-4 py-2 relative group hover:text-primary transition-colors"
                 >
                   {link.label}
                   <span className="absolute left-0 bottom-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-400 ease-out" />

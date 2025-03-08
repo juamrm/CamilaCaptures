@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        montserrat: ["Montserrat", "sans-serif"],
-        inter: ["Inter", "sans-serif"],
+        inter: ["Inter", "system-ui", "sans-serif"],
+        manrope: ["Manrope", "system-ui", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

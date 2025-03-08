@@ -25,10 +25,10 @@ export default function Home() {
       <Header />
 
       {/* Hero Section */}
-      <section className="pt-24 md:pt-28 pb-8 md:pb-12 px-4 relative overflow-hidden">
+      <section className="pt-28 md:pt-32 pb-12 md:pb-16 px-4 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background/50 to-background/80 pointer-events-none" />
         <div className="container mx-auto relative">
-          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-8">
+          <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
             {/* Profile Image */}
             <div className="w-full md:w-1/3 max-w-[160px] md:max-w-[200px] relative">
               <div className="absolute inset-0 bg-primary/10 rounded-full blur-xl transform scale-110" />
@@ -47,9 +47,9 @@ export default function Home() {
               </AspectRatio>
             </div>
             {/* Hero Text */}
-            <div className="w-full md:w-2/3 text-center md:text-left space-y-3">
-              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
-                Fotografia de Parto, capturando os primeiros momentos
+            <div className="w-full md:w-2/3 text-center md:text-left space-y-4">
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight font-manrope">
+                Fotografias de parto e bebês, capturando os primeiros momentos.
               </h1>
               <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto md:mx-0">
                 Fotografias de partos que contam histórias únicas com
@@ -62,12 +62,12 @@ export default function Home() {
                 </span>{" "}
                 e<span className="font-bold text-primary"> autenticidade</span>
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start pt-3">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start pt-4">
                 <a
                   href="#portfolio"
                   className="inline-flex items-center justify-center px-5 py-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-sm"
                 >
-                  Ver Portfolio
+                  Ver Portfólio
                 </a>
                 <a
                   href="#contact"
@@ -144,7 +144,7 @@ export default function Home() {
             Hospitais Acreditados
           </h2>
           <p className="text-muted-foreground text-center mb-8 max-w-2xl mx-auto">
-            Estou credenciada para trabalhar em 8 hospitais de São Paulo,
+            Estou credenciada para trabalhar em oito hospitais de São Paulo,
             garantindo minha presença no seu momento especial.
           </p>
           <HospitalLogos />
@@ -154,9 +154,15 @@ export default function Home() {
       {/* Portfolio Section */}
       <section id="portfolio" className="py-12 md:py-16 px-4 bg-muted/50">
         <div className="container mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
-            Portfolio
-          </h2>
+          <div className="max-w-2xl mx-auto text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 font-manrope">
+              Portfólio
+            </h2>
+            <p className="text-muted-foreground">
+              Veja alguns dos meus trabalhos. Ficarei feliz em compartilhar mais
+              imagens com você.
+            </p>
+          </div>
           <PortfolioGrid />
         </div>
       </section>
