@@ -49,7 +49,7 @@ export default function Home() {
             {/* Hero Text */}
             <div className="w-full md:w-2/3 text-center md:text-left space-y-3">
               <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
-                Capturando os primeiros momentos
+                Fotografia de Parto, capturando os primeiros momentos
               </h1>
               <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto md:mx-0">
                 Fotografias de partos que contam histórias únicas com
@@ -120,8 +120,7 @@ export default function Home() {
                   </p>
                   <p className="text-muted-foreground">
                     Além dos partos, realizo ensaios de modelos, eventos e
-                    retratos, sempre buscando autenticidade e emoção em cada
-                    imagem.
+                    retrato.
                   </p>
                   <p className="text-muted-foreground">
                     Se você deseja fotos cheias de emoção, sensibilidade e
@@ -145,8 +144,8 @@ export default function Home() {
             Hospitais Acreditados
           </h2>
           <p className="text-muted-foreground text-center mb-8 max-w-2xl mx-auto">
-            Estou credenciada para trabalhar nos hospitais de São Paulo,
-            garantindo que estou presente para seu momento especial.
+            Estou credenciada para trabalhar em 8 hospitais de São Paulo,
+            garantindo minha presença no seu momento especial.
           </p>
           <HospitalLogos />
         </div>
@@ -163,53 +162,83 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-12 md:py-16 px-4">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            {/* Left side - Contact Info and Image */}
-            <div className="flex flex-col items-center md:items-start gap-6 md:pl-8">
-              <div className="w-full max-w-sm"></div>
-              <div className="text-center md:text-left space-y-6">
-                <h2 className="text-2xl md:text-3xl font-bold">
-                  Entre em contato comigo!
-                </h2>
-                <div className="flex flex-col gap-4">
+      <section id="contact" className="py-12 md:py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
+            Entre em contato
+          </h2>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 max-w-6xl mx-auto">
+            {/* Left side - Contact Form */}
+            <div className="bg-background rounded-2xl p-6 md:p-8 shadow-sm">
+              <div className="max-w-md mx-auto">
+                <h3 className="text-xl font-semibold mb-6">
+                  Envie sua mensagem
+                </h3>
+                <ContactForm />
+              </div>
+            </div>
+
+            {/* Right side - Contact Info */}
+            <div className="flex flex-col justify-center">
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-semibold mb-4">
+                    Vamos conversar?
+                  </h3>
+                  <p className="text-muted-foreground mb-6">
+                    Estou aqui para capturar seus momentos especiais. Entre em
+                    contato e vamos criar memórias juntos.
+                  </p>
+                </div>
+
+                <div className="space-y-6">
                   <a
                     href="https://wa.me/5511998624083"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                    className="flex items-center gap-4 p-4 rounded-lg border border-border hover:bg-muted/50 transition-colors"
                   >
-                    <SiWhatsapp className="w-5 h-5" />
-                    <span>11 99862-4083</span>
+                    <div className="bg-primary/10 p-3 rounded-full">
+                      <SiWhatsapp className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <p className="font-medium">WhatsApp</p>
+                      <p className="text-sm text-muted-foreground">
+                        11 99862-4083
+                      </p>
+                    </div>
                   </a>
+
                   <a
                     href="mailto:camilansamorim@gmail.com"
-                    className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                    className="flex items-center gap-4 p-4 rounded-lg border border-border hover:bg-muted/50 transition-colors"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="w-5 h-5"
-                    >
-                      <rect width="20" height="16" x="2" y="4" rx="2" />
-                      <path d="m22 6-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 6" />
-                    </svg>
-                    <span>camilansamorim@gmail.com</span>
+                    <div className="bg-primary/10 p-3 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="w-6 h-6 text-primary"
+                      >
+                        <rect width="20" height="16" x="2" y="4" rx="2" />
+                        <path d="m22 6-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 6" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-medium">Email</p>
+                      <p className="text-sm text-muted-foreground">
+                        camilansamorim@gmail.com
+                      </p>
+                    </div>
                   </a>
                 </div>
               </div>
-            </div>
-            {/* Right side - Contact Form */}
-            <div className="w-full max-w-[320px] mx-auto">
-              <ContactForm />
             </div>
           </div>
         </div>
