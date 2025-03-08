@@ -2,11 +2,11 @@ import { Card } from "@/components/ui/card";
 import einsteinLogo from "@/assets/logos/eisnteinlogo.webp";
 import santaJoanaLogo from "@/assets/logos/logosantajoanaok.png";
 import promatreLogo from "@/assets/logos/promatrelogo.png";
-import santaMariaLogo from "@/assets/logos/santamarialogo.png";
+import santaMariaLogo from "@/assets/logos/santamariaverticallogo.png";
 import hospitalVitoriaLogo from "@/assets/logos/hospitalvitorialogo.png";
 import saoLuizLogo from "@/assets/logos/saoluizlogo.svg";
 import vilaNovaStarLogo from "@/assets/logos/redestarlogo.svg";
-import sepacoLogo from "@/assets/logos/sepacologo.webp";
+import sepacoLogo from "@/assets/logos/sepacologo2.png";
 
 const HOSPITAL_LOGOS = [
   {
@@ -17,19 +17,18 @@ const HOSPITAL_LOGOS = [
   {
     name: "Hospital Santa Joana",
     logo: santaJoanaLogo,
-    className: "w-auto h-full max-h-[70px] object-contain",
+    className: "w-auto h-full max-h-[100px] object-contain",
   },
   {
     name: "Hospital Promatre",
     logo: promatreLogo,
-    className: "w-auto h-full max-h-[70px] object-contain brightness-110",
+    className: "w-auto h-full max-h-[85px] object-contain brightness-110",
   },
   {
     name: "Hospital Santa Maria",
     logo: santaMariaLogo,
-    className: "w-auto h-full max-h-[70px] object-contain",
-    containerClassName:
-      "bg-gradient-to-br from-blue-900/40 to-blue-800/30 rounded-lg p-2",
+    className: "w-auto h-full max-h-[90px] object-contain",
+    containerClassName: "bg-white rounded-lg p-2",
   },
   {
     name: "Hospital Vitória",
@@ -50,6 +49,7 @@ const HOSPITAL_LOGOS = [
     name: "Hospital Sepaco",
     logo: sepacoLogo,
     className: "w-auto h-full max-h-[70px] object-contain",
+    containerClassName: "bg-white rounded-lg p-2",
   },
 ];
 
