@@ -11,8 +11,8 @@ export default function Portfolio() {
           content="Explore o portfolio de Camila Amorim, mostrando a beleza e emoção da fotografia de parto."
         />
       </Helmet>
-      <h1 className="text-4xl font-bold mb-8 font-manrope">Portfolio</h1>
-      <p className="text-muted-foreground mb-8 max-w-2xl">
+      <h1 className="text-4xl font-bold mb-10 font-manrope">Portfolio</h1>
+      <p className="text-muted-foreground mb-10 max-w-2xl">
         Cada foto conta uma história. Veja alguns dos momentos especiais que
         tive o privilégio de registrar. Quer conhecer mais? Vamos conversar!
       </p>

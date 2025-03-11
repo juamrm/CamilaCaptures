@@ -20,11 +20,14 @@ import img18 from "@/assets/images/webp/2024_14_26_46_20250305_134217_0000.webp"
 export interface PortfolioImage {
   src: string;
   alt: string;
-  priority?: boolean; // For loading priority
-  objectPosition?: string; // Custom positioning for the image
-  blurDataURL?: string; // Base64 tiny placeholder image
+  priority?: boolean;
+  objectPosition?: string;
+  blurDataURL?: string;
   width?: number;
   height?: number;
+  title?: string; // SEO title for the image
+  description?: string; // Rich description for SEO
+  keywords?: string[]; // Related keywords for the image
 }
 
 // Placeholder blur data URL (a very small, blurred image)
@@ -34,95 +37,137 @@ const defaultBlurDataURL =
 export const PORTFOLIO_IMAGES: PortfolioImage[] = [
   {
     src: img1,
-    alt: "Birth photography moment - Medical setting",
+    alt: "Fotografia de parto em ambiente hospitalar - Momento do nascimento em São Paulo",
+    title: "Fotografia de Parto Hospitalar",
+    description:
+      "Registro profissional do momento do nascimento em ambiente hospitalar, capturando a emoção e os detalhes do primeiro contato entre mãe e bebê",
+    keywords: [
+      "parto hospitalar",
+      "nascimento",
+      "fotografia de parto",
+      "São Paulo",
+    ],
     priority: true,
     blurDataURL: defaultBlurDataURL,
   },
   {
     src: img2,
-    alt: "Birth photography moment - First breath",
+    alt: "Primeiro respiro do recém-nascido - Fotografia de parto humanizado em São Paulo",
+    title: "Primeiro Respiro do Bebê",
+    description:
+      "Captura do momento único do primeiro respiro do bebê, documentando a transição para a vida extra-uterina com sensibilidade",
+    keywords: [
+      "primeiro respiro",
+      "recém-nascido",
+      "parto humanizado",
+      "São Paulo",
+    ],
     priority: true,
     blurDataURL: defaultBlurDataURL,
   },
   {
     src: img3,
-    alt: "Birth photography moment - Baby smile",
+    alt: "Sorriso do recém-nascido - Fotografia emotiva de parto em São Paulo",
+    title: "Sorriso do Recém-nascido",
+    description:
+      "Registro delicado das primeiras expressões do bebê, capturando a pureza e alegria dos primeiros momentos de vida",
+    keywords: ["sorriso bebê", "recém-nascido", "expressões", "São Paulo"],
     blurDataURL: defaultBlurDataURL,
   },
   {
     src: img4,
-    alt: "Birth photography moment - Baby details",
+    alt: "Momento de fotografia de nascimento - Detalhes do bebê",
     blurDataURL: defaultBlurDataURL,
   },
   {
     src: img5,
-    alt: "Birth photography moment - Medical procedure",
+    alt: "Momento de fotografia de nascimento - Procedimento médico",
     blurDataURL: defaultBlurDataURL,
   },
   {
     src: img6,
-    alt: "Birth photography moment - Baby cuddles",
+    alt: "Momento de fotografia de nascimento - Abraços do bebê",
     blurDataURL: defaultBlurDataURL,
   },
   {
     src: img7,
-    alt: "Birth photography moment - Delivery room",
+    alt: "Momento de fotografia de nascimento - Sala de parto",
     blurDataURL: defaultBlurDataURL,
   },
   {
     src: img8,
-    alt: "Birth photography moment - Baby's first smile",
+    alt: "Momento de fotografia de nascimento - Primeiro sorriso do bebê",
     blurDataURL: defaultBlurDataURL,
   },
   {
     src: img9,
-    alt: "Birth photography moment - Family bonding",
+    alt: "Momento de fotografia de nascimento - Vínculo familiar",
     blurDataURL: defaultBlurDataURL,
   },
   {
     src: img10,
-    alt: "Birth photography moment - Birth process",
+    alt: "Momento de fotografia de nascimento - Processo de nascimento",
     blurDataURL: defaultBlurDataURL,
   },
   {
     src: img11,
-    alt: "Birth photography moment - Baby's first moments",
+    alt: "Momento de fotografia de nascimento - Primeiros momentos do bebê",
     blurDataURL: defaultBlurDataURL,
   },
   {
     src: img12,
-    alt: "Birth photography moment - Newborn details",
+    alt: "Momento de fotografia de nascimento - Detalhes do recém-nascido",
     blurDataURL: defaultBlurDataURL,
   },
   {
     src: img13,
-    alt: "Birth photography moment - Delivery moment",
+    alt: "Momento de fotografia de nascimento - Momento do parto",
     blurDataURL: defaultBlurDataURL,
   },
   {
     src: img14,
-    alt: "Birth photography moment - Birth process",
+    alt: "Momento de fotografia de nascimento - Processo de nascimento",
     blurDataURL: defaultBlurDataURL,
   },
   {
     src: img15,
-    alt: "Birth photography moment - Baby's first look",
+    alt: "Momento de fotografia de nascimento - Primeiro olhar do bebê",
     blurDataURL: defaultBlurDataURL,
   },
   {
     src: img16,
-    alt: "Birth photography moment - Medical procedure",
+    alt: "Momento de fotografia de nascimento - Procedimento médico",
     blurDataURL: defaultBlurDataURL,
   },
   {
     src: img17,
-    alt: "Birth photography moment - Baby's first touch",
+    alt: "Momento de fotografia de nascimento - Primeiro toque do bebê",
     blurDataURL: defaultBlurDataURL,
   },
   {
     src: img18,
-    alt: "Birth photography moment - Delivery room",
+    alt: "Sala de parto humanizado - Fotografia profissional em hospital de São Paulo",
+    title: "Ambiente de Parto Humanizado",
+    description:
+      "Documentação do ambiente acolhedor da sala de parto, mostrando a estrutura hospitalar preparada para um nascimento humanizado",
+    keywords: ["sala de parto", "parto humanizado", "hospital", "São Paulo"],
     objectPosition: "center top",
     blurDataURL: defaultBlurDataURL,
   },
 ];
+
+// Add JSON-LD structured data for image gallery
+export const galleryStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  name: "Galeria de Fotografia de Parto - Camila Amorim",
+  description:
+    "Galeria profissional de fotografias de parto e nascimento em São Paulo, capturando momentos únicos com sensibilidade e respeito",
+  image: PORTFOLIO_IMAGES.map((img) => ({
+    "@type": "ImageObject",
+    contentUrl: img.src,
+    name: img.title,
+    description: img.description,
+    keywords: img.keywords?.join(", "),
+  })),
+};
